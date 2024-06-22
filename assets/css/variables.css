@@ -1,0 +1,95 @@
+:root {
+  /* Base Colors(RGB) */
+  --color-black: rgb(35, 35, 35);
+  --color-white: rgb(255, 255, 255);
+  --color-gray-900: rgb(6, 6, 6);
+  --color-gray-800: rgb(36, 36, 36);
+  --color-gray-700: rgb(60, 60, 60);
+  --color-gray-600: rgb(97, 97, 97);
+  --color-gray-500: rgb(128, 128, 128);
+  --color-gray-400: rgb(156, 156, 156);
+  --color-gray-300: rgb(184, 184, 184);
+  --color-gray-200: rgb(218, 218, 218);
+  --color-gray-100: rgb(240, 240, 240);
+  --color-gray-50: rgb(252, 252, 252);
+
+  --color-primary-lighter: rgb(255, 240, 212);
+  --color-primary-light: rgb(255, 222, 164);
+  --color-primary-main: rgb(255, 184, 61);
+  --color-primary-dark: rgb(255, 142, 49);
+  --color-primary-background: rgb(49, 49, 49);
+  --main-bg: var(--color-primary-background);
+
+  /* Font */
+  --font-size-base: 1rem;
+  --font-family: system-ui, Helvetica, Arial, "Noto Sans TC", sans-serif;
+
+  /* Breakpint */
+  --breakpoint-375: 375px;
+  --breakpoint-560: 560px;
+  --breakpoint-768: 768px;
+  --breakpoint-960: 960px;
+  --breakpoint-1024: 1024px;
+  --breakpoint-1280: 1280px;
+  --breakpoint-1440: 1440px;
+  --breakpoint-1600: 1600px;
+  --breakpoint-1920: 1920px;
+
+  /* Theme Colors(RGB) */
+  /* --color-primary: rgb(122, 85, 255); */
+
+  /* Outline */
+  --outline-color: var(--color-primary-dark);
+
+  /* link */
+  --link-color: var(--color-black);
+  /* --color-visited: var(--color-black); */
+
+  /* noscript */
+  --noscript-bg: var(--color-white);
+}
+
+/*************************
+  ColorMode
+*************************/
+.light-mode {
+  --loading-msg-bg: var(--color-white);
+  --loading-msg-border: var(--color-gray-200);
+  --color-text: var(--color-black);
+  --text-gray: var(--color-gray-600);
+  --card-content: var(--color-gray-800);
+  --copyright-text: var(--color-primary-main);
+  --landing-bg: var(--color-primary-lighter);
+  --main-bg: var(--color-primary-background);
+  --policy-card-bg: var(--color-primary-lighter);
+  --filter-bg: var(--color-white);
+  --filter-item-bg: var(--color-primary-main);
+  --block-title-bg: var(--color-primary-main);
+  --header-bg: var(--color-primary-lighter);
+  --masonry-card-bg: var(--color-white);
+  --footer-bg: var(--color-primary-main);
+  --copyright-bg: var(--color-black);
+  --border-color: var(--color-gray-200);
+  --logo-text-color: var(--color-black);
+}
+
+.dark-mode {
+  --loading-msg-bg: transparent;
+  --loading-msg-border: var(--color-white);
+  --color-text: var(--color-white);
+  --text-gray: var(--color-gray-300);
+  --card-content: var(--color-gray-200);
+  --copyright-text: var(--color-white);
+  --landing-bg: var(--color-black);
+  --main-bg: var(--color-gray-700);
+  --policy-card-bg: var(--color-gray-600);
+  --filter-bg: var(--color-primary-main);
+  --filter-item-bg: var(--color-white);
+  --block-title-bg: var(--color-gray-600);
+  --header-bg: var(--color-black);
+  --masonry-card-bg: transparent;
+  --footer-bg: var(--color-black);
+  --copyright-bg: var(--color-gray-700);
+  --border-color: var(--color-gray-700);
+  --logo-text-color: var(--color-white);
+}
