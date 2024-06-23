@@ -4,9 +4,10 @@ export default defineNuxtConfig({
   css: [
     '@/assets/css/style.css',
   ],
+  // modules: ['@nuxt/ui'],
   "app": {
     "head": {
-      "viewport": "width=500, initial-scale=1",
+      "viewport": "width=device-width, initial-scale=1",
       "title": "서지유 🤍 조수현",
       "meta": [
           { "name": "description", "content": "서지유, 조수현 결혼합니다." },
@@ -15,7 +16,7 @@ export default defineNuxtConfig({
           { "property": "og:description", "content": "서지유, 조수현 결혼합니다." },
       ],
       link: [
-        { rel: "icon", type: "image/png", href: "/favicon.ico" },
+        { rel: "icon", type: "image/png", href: "favicon.ico" },
       ],
     },
     baseURL: '/tngus_nanunju/',
