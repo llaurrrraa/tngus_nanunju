@@ -20,6 +20,9 @@ export default defineNuxtConfig({
       ],
     },
     baseURL: '/tngus_nanunju/',
-    buildAssetsDir: 'assets',
+    buildAssetsDir: 'assets' 
   },
+  "nitro": {
+    "plugins": ["~/server/db/index.js"],
+  },  
 })

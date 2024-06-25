@@ -4,16 +4,16 @@
       <main>
         <div class="main-title">
           <div class="first">
-            <p class="kr" style="margin-right: 1.5rem">서지유</p>  
-            <p>|</p>  
-            <p class="kr" style="margin-left: 1.5rem">조수현</p>  
+            <p class="kr" style="margin-right: 1.5rem">서지유</p>
+            <p>|</p>
+            <p class="kr" style="margin-left: 1.5rem">조수현</p>
           </div>
           <div class="second">
             <p class="kr">2024년 8월 31일 (토) 저녁 5시 30분</p>
             <p class="kr">크레스트72</p>
           </div>
         </div>
-        <img class="main-img" src="~/assets/images/main_img.jpg" alt="">
+        <img class="main-img" src="~/assets/images/main_img.jpg" alt="" />
         <div class="sub">
           <p class="en sub-title">We're gonna get Married.</p>
           <client-only>
@@ -33,26 +33,32 @@
             :width="170"
           />
         </client-only>
-        <img src="~/assets/images/bg.jpg" alt="">
+        <img src="~/assets/images/bg.jpg" alt="" />
         <div class="wording-wrapper">
           <p class="kr wording">
-            지유를 행복하게 만드는 미소를 가진 수현이와 수현이의 손을 항상 따뜻하게 잡아주는 지유가 
-            싱그러운 햇살이 축복해 주는 8월의 마지막 날 <br/>평생 서로의 행복이 되기로 약속하려 합니다. <br/><br/>
-            그 행복의 순간에 소중한 분들을 초대 드립니다.<br/> 귀한 발걸음으로 축하해 주시면 감사하겠습니다. 
+            지유를 행복하게 만드는 미소를 가진 수현이와 수현이의 손을 항상
+            따뜻하게 잡아주는 지유가 싱그러운 햇살이 축복해 주는 8월의 마지막 날
+            <br />평생 서로의 행복이 되기로 약속하려 합니다. <br /><br />
+            그 행복의 순간에 소중한 분들을 초대 드립니다.<br />
+            귀한 발걸음으로 축하해 주시면 감사하겠습니다.
           </p>
-          <hr>
+          <hr />
           <div class="contact">
-            <p class="kr" style="font-weight: bold;">서상길. 이연숙<span>아들</span> 서지유</p>
-            <p class="kr" style="font-weight: bold;">조재성. 홍연숙<span>딸</span> 조수현</p>
+            <p class="kr" style="font-weight: bold">
+              서상길. 이연숙<span>아들</span> 서지유
+            </p>
+            <p class="kr" style="font-weight: bold">
+              조재성. 홍연숙<span>딸</span> 조수현
+            </p>
             <button class="kr contact-btn" @click="showDialog">연락하기</button>
           </div>
         </div>
       </div>
       <div class="calendar">
-        <p class="en">- Calendar -</p>
+        <p class="en block-title">- Calendar -</p>
         <div class="calendar-date">
           <div class="header kr">8월 <span class="en">August</span></div>
-          <hr>
+          <hr />
           <table border="0">
             <tbody>
               <tr>
@@ -113,15 +119,32 @@
           </table>
         </div>
       </div>
+      <div class="message-board">
+        <p class="en block-title">- Guest Book -</p>
+        <input type="text" placeholder="이름 / name" v-model="boardData.name" />
+        <textarea
+          class="input-textarea"
+          placeholder="메세지 / message"
+          v-model="boardData.message"
+        ></textarea>
+        <button class="submit" @click="submit">등록하기 Submit</button>
+      </div>
+      <div class="board-list">
+        <ul>
+          <li v-for="data in boardList" :key="data._id">
+            {{ data.name }} / {{ data.message }} / {{ data.created_time }}
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2"
 const mobile = ref(false)
 const checkScreenSize = () => {
-  if (process.client && window.innerWidth <= 768) return mobile.value = true
+  if (process.client && window.innerWidth <= 768) return (mobile.value = true)
   mobile.value = false
 }
 checkScreenSize()
@@ -151,12 +174,46 @@ const showDialog = () => {
       rgba(225,255,255,0.4)
       center top
       no-repeat
-    `
-  });
+    `,
+  })
+}
+
+const { data: boardList, refresh } = (await useFetch("/api/board")) as {
+  [key: string]: any
+}
+
+const boardData = ref({
+  name: "",
+  message: "",
+  created_time: "",
+})
+
+const addData = async () => {
+  try {
+    return await $fetch("/api/board/add", {
+      method: "POST",
+      body: {
+        name: boardData.value.name,
+        message: boardData.value.message,
+        created_time: new Date(),
+      },
+    })
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+const submit = async () => {
+  if (boardData.value.name !== "" || boardData.value.message !== "") {
+    const result = await addData()
+    refresh()
+    boardData.value.name = ""
+    boardData.value.message = ""
+    console.log(result)
+  }
 }
 
 onMounted(() => {
-  window.addEventListener('resize', checkScreenSize)
+  window.addEventListener("resize", checkScreenSize)
 })
-
 </script>

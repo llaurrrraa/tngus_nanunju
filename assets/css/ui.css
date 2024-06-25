@@ -133,6 +133,9 @@ main {
     position: absolute;
     z-index: 1;
     top: 10rem;
+    & .wording {
+      padding: 0 1.5rem 3.25rem;
+    }
     & p {
       position: relative;
       color: #fff;
@@ -177,8 +180,8 @@ main {
 .contact-btn{
   padding: 0.75rem 3.5rem;
   border: 0.5px solid var(--color-white);
-  color: #fff;
-  background-color: rgba(255,255,255, 0.2);
+  color: #7397b1;
+  background-color: rgb(255, 255, 255);
   border-radius: 0.5rem;
   font-size: 1rem;
   font-weight: bold;
@@ -233,13 +236,17 @@ main {
   }
 }
 
+.block-title {
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+
 .calendar {
   margin: 4rem 2rem 2rem;
   & p {
     font-style: italic;
   }
   & .calendar-date {
-    margin-top: 2rem;
     & .header {
       margin-bottom: 1rem;
       & span {
@@ -270,8 +277,12 @@ main {
         border-radius: 100%;
         position: absolute;
         /* bottom: 1%; */
-        right: 12%;
-        transform: translate(30%, -15%);
+        /* right: 12%; */
+        transform: translate(10%, -20%);
+        @media screen and (width <= 768px) {
+          right: 12%;
+          transform: translate(30%, -15%);
+        }
         &::before {
           content: '31';
           width: 100%;
@@ -279,10 +290,43 @@ main {
           top: 8px;
           left: 50%;
           transform: translateX(-18px);
+          @media screen and (width <= 768px) {
+            left: 50%;
+            transform: translateX(-18px);
+          }
         }
       }
     }
   }
+}
+
+.message-board {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+  & input, .input-textarea  {
+    border: 1px solid #7397b1;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    height: 2.25rem;
+    text-align: left;
+    padding-left: 10px;
+  }
+  & .input-textarea {
+    height: 120px;
+    padding-top: 10px;
+  }
+  & .submit {
+    background-color: #7397b1;
+    padding: 0.5rem;
+    border-radius: 6px;
+    color: #fff;
+  }
+}
+
+.board-list {
+  min-height: 300px;
 }
 
 .layout {
