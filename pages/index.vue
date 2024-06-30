@@ -13,7 +13,7 @@
             <p class="kr">크레스트72</p>
           </div>
         </div>
-        <img class="main-img" src="~/assets/images/main_img.jpg" alt="" />
+        <!-- <img class="main-img" src="~/assets/images/main_img.jpg" alt="" /> -->
         <div class="sub">
           <p class="en sub-title">We're gonna get Married.</p>
           <client-only>
@@ -119,7 +119,7 @@
           </table>
         </div>
       </div>
-      <div class="message-board">
+      <!-- <div class="message-board">
         <p class="en block-title">- Guest Book -</p>
         <input type="text" placeholder="이름 / name" v-model="boardData.name" />
         <textarea
@@ -135,7 +135,7 @@
             {{ data.name }} / {{ data.message }} / {{ data.created_time }}
           </li>
         </ul>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -188,30 +188,30 @@ const boardData = ref({
   created_time: "",
 })
 
-const addData = async () => {
-  try {
-    return await $fetch("/api/board/add", {
-      method: "POST",
-      body: {
-        name: boardData.value.name,
-        message: boardData.value.message,
-        created_time: new Date(),
-      },
-    })
-  } catch (error) {
-    console.error(error)
-  }
-}
+// const addData = async () => {
+//   try {
+//     return await $fetch("/api/board/add", {
+//       method: "POST",
+//       body: {
+//         name: boardData.value.name,
+//         message: boardData.value.message,
+//         created_time: new Date(),
+//       },
+//     })
+//   } catch (error) {
+//     console.error(error)
+//   }
+// }
 
-const submit = async () => {
-  if (boardData.value.name !== "" || boardData.value.message !== "") {
-    const result = await addData()
-    refresh()
-    boardData.value.name = ""
-    boardData.value.message = ""
-    console.log(result)
-  }
-}
+// const submit = async () => {
+//   if (boardData.value.name !== "" || boardData.value.message !== "") {
+//     const result = await addData()
+//     refresh()
+//     boardData.value.name = ""
+//     boardData.value.message = ""
+//     console.log(result)
+//   }
+// }
 
 onMounted(() => {
   window.addEventListener("resize", checkScreenSize)

@@ -47,6 +47,14 @@ body {
 }
 
 main {
+  background-image: url(/assets/images/main_img.jpg);
+  background-size: cover;
+  background-repeat: no-repeat; 
+  background-position: center;
+  height: 100dvh;
+  width: 100%;
+  position: relative;
+  /* transform: translateX(-50%); */
   & .main-img {
     height: 100dvh;
     width: 100%;
