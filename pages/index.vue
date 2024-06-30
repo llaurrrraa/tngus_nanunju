@@ -9,8 +9,8 @@
             <p class="kr" style="margin-left: 1.5rem">조수현</p>
           </div>
           <div class="second">
-            <p class="kr">2024년 8월 31일 (토) 저녁 5시 30분</p>
-            <p class="kr">크레스트72</p>
+            <!-- <p class="kr">2024년 8월 31일 (토) 저녁 5시 30분</p>
+            <p class="kr">크레스트72</p> -->
           </div>
         </div>
         <!-- <img class="main-img" src="~/assets/images/main_img.jpg" alt="" /> -->
