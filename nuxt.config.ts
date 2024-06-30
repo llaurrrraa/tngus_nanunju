@@ -22,7 +22,15 @@ export default defineNuxtConfig({
     baseURL: '/tngus_nanunju/',
     buildAssetsDir: 'assets' 
   },
-  "nitro": {
-    "plugins": ["~/server/db/index.js"],
-  },  
+  // nitro: {
+  //   plugins: ["~/server/db/index.js"],
+  //   preset: "vercel"
+  // },
+  runtimeConfig: {
+    dbURL: process.env.DATABASE_URL
+  },
+  routeRules: {
+    // '/': { prerender: true, isr: true },
+    '/api/**': { cors: true },
+  }
 })

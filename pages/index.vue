@@ -25,7 +25,7 @@
           </client-only>
         </div>
       </main>
-      <div class="info">
+      <section class="info">
         <client-only>
           <Vue3Lottie
             animationLink="https://lottie.host/4b186874-0bba-4a97-b238-64f395f4cfaa/GIe14diyCZ.json"
@@ -53,8 +53,8 @@
             <button class="kr contact-btn" @click="showDialog">연락하기</button>
           </div>
         </div>
-      </div>
-      <div class="calendar">
+      </section>
+      <section class="calendar">
         <p class="en block-title">- Calendar -</p>
         <div class="calendar-date">
           <div class="header kr">8월 <span class="en">August</span></div>
@@ -118,8 +118,8 @@
             </tbody>
           </table>
         </div>
-      </div>
-      <div class="message-board">
+      </section>
+      <section class="message-board">
         <p class="en block-title">- Guest Book -</p>
         <input type="text" placeholder="이름 / name" v-model="boardData.name" />
         <textarea
@@ -128,14 +128,14 @@
           v-model="boardData.message"
         ></textarea>
         <button class="submit" @click="submit">등록하기 Submit</button>
-      </div>
-      <div class="board-list">
+      </section>
+      <section class="board-list">
         <ul>
-          <li v-for="data in boardList" :key="data._id">
+          <li v-for="(data, index) in test" :key="data.index">
             {{ data.name }} / {{ data.message }} / {{ data.created_time }}
           </li>
         </ul>
-      </div>
+      </section>
     </div>
   </div>
 </template>
@@ -178,7 +178,14 @@ const showDialog = () => {
   })
 }
 
-const { data: boardList, refresh } = (await useFetch("/api/board")) as {
+// const { data: boardList, refresh } = (await useFetch("/api/board")) as {
+//   [key: string]: any
+// }
+
+const { data: test, refresh } = (await useFetch(
+  "https://script.google.com/macros/s/AKfycbzH6LnDHOhyQtTaB01yHRhcWk0cQ_fUUMxuLkr10gA04gyvWTKXAwkHMuXrompecUigKQ/exec",
+  { method: "get" }
+)) as {
   [key: string]: any
 }
 
@@ -188,28 +195,58 @@ const boardData = ref({
   created_time: "",
 })
 
-const addData = async () => {
-  try {
-    return await $fetch("/api/board/add", {
-      method: "POST",
-      body: {
-        name: boardData.value.name,
-        message: boardData.value.message,
-        created_time: new Date(),
+const addUser = async (data: any) => {
+  await useFetch(
+    "https://script.google.com/macros/s/AKfycbx2CGzCrM3iJ5SOofl1ti3N3gn5ZTO7fr3TusXlI8OFGWEtYYAOGtM0kBEmZq9kQZxdlQ/exec",
+    {
+      method: "post",
+      body: data,
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8",
       },
-    })
-  } catch (error) {
-    console.error(error)
-  }
+    }
+  )
+}
+
+// const addData = async () => {
+//   try {
+//     return await $fetch("/api/board/add", {
+//       method: "POST",
+//       body: {
+//         name: boardData.value.name,
+//         message: boardData.value.message,
+//         created_time: new Date(),
+//       },
+//     })
+//   } catch (error) {
+//     console.error(error)
+//   }
+// }
+
+const convertTime = (date: any) => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const hour = date.getHours()
+  const minutes = date.getMinutes()
+  const seconds = date.getSeconds()
+
+  const string = `${year}-${month > 9 ? "" : "0"}${month}-${
+    day > 9 ? "" : "0"
+  }${day} ${hour < 10 ? "0" : ""}${hour}:${minutes < 10 ? "0" : ""}${minutes}:${
+    seconds < 10 ? "0" : ""
+  }${seconds}`
+  return string
 }
 
 const submit = async () => {
   if (boardData.value.name !== "" || boardData.value.message !== "") {
-    const result = await addData()
+    boardData.value.created_time = convertTime(new Date())
+    const result = await addUser(boardData.value)
     refresh()
     boardData.value.name = ""
     boardData.value.message = ""
-    console.log(result)
+    boardData.value.created_time = ""
   }
 }
 
