@@ -13,7 +13,7 @@
             <p class="kr">크레스트72</p>
           </div>
         </div>
-        <img class="main-img" src="~/assets/images/main_img.jpg" alt="" />
+        <!-- <img class="main-img" src="~/assets/images/main_img.jpg" alt="" /> -->
         <div class="sub">
           <p class="en sub-title">We're gonna get Married.</p>
           <client-only>
