@@ -2,38 +2,41 @@
   <div class="invite-wrap">
     <div class="invite-inner">
       <main>
-        <div class="main-title">
-          <!-- <div class="first">
-            <p class="kr" style="margin-right: 1.5rem">서지유</p>
-            <p>|</p>
-            <p class="kr" style="margin-left: 1.5rem">조수현</p>
-          </div> -->
-          <div class="second">
-            <!-- <p class="kr">2024년 8월 31일 (토) 저녁 5시 30분</p>
-            <p class="kr">크레스트72</p> -->
-          </div>
-        </div>
-        <!-- <img class="main-img" src="~/assets/images/main_img.jpg" alt="" /> -->
-        <div class="sub">
-          <!-- <p class="en sub-title">We're gonna get Married.</p> -->
-          <client-only>
-            <Vue3Lottie
-              animationLink="https://lottie.host/bbd048a3-ae9d-4afd-9aaf-0a4b5c27b77f/goFdbUMKrX.json"
-              :height="25"
-              :width="25"
-            />
-          </client-only>
-        </div>
+        <img v-if="isPlay" src="/assets/images/icons-play.png" class="icon-play" id="btn-play" @click="handleAudio('play')"></img>
+        <img v-if="isPause" src="/assets/images/icons-pause.png" class="icon-pause" id="btn-pause" @click="handleAudio('pause')"></img>
+        <audio ref="audio" hidden="true">
+          <source src="/public/bg-sound.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
       </main>
       <section class="info">
-        <client-only>
-          <Vue3Lottie
-            animationLink="https://lottie.host/4b186874-0bba-4a97-b238-64f395f4cfaa/GIe14diyCZ.json"
-            :height="170"
-            :width="170"
-          />
-        </client-only>
-        <!-- <img src="~/assets/images/bg.jpg" alt="" /> -->
+        <div class="first">
+          <div>
+            <p style="margin-right: 1.5rem; margin-bottom: 0.75rem">🤵🏻</p>
+            <p class="kr name" style="margin-right: 1.5rem">
+              신랑
+              <span style="margin-left: 0.5rem; font-weight: bold">서지유</span>
+            </p>
+            <p class="kr" style="margin-right: 1.5rem">Seo Ji You</p>
+          </div>
+          <p>|</p>
+          <div>
+            <p style="margin-left: 1.5rem; margin-bottom: 0.75rem">👰🏻</p>
+            <p class="kr name" style="margin-left: 1.5rem">
+              신부
+              <span style="margin-left: 0.5rem; font-weight: bold">조수현</span>
+            </p>
+            <p class="kr" style="margin-left: 1.5rem">Cho Su Hyun</p>
+          </div>
+        </div>
+        <div class="second">
+          <p class="kr">2024년 8월 31일 (토) 저녁 5시 30분</p>
+          <p class="kr">크레스트72</p>
+        </div>
+        <div class="info-images">
+          <img src="~/assets/images/sub_img.png" class="sub_img" alt="" />
+          <img src="~/assets/images/flower-2.png" class="flower_1" alt="" />
+        </div>
         <div class="wording-wrapper">
           <p class="kr wording">
             지유를 행복하게 만드는 미소를 가진 수현이와 수현이의 손을 항상
@@ -44,20 +47,17 @@
           </p>
           <hr />
           <div class="contact">
-            <p class="kr" style="font-weight: bold">
-              서상길. 이연숙<span>아들</span> 서지유
-            </p>
-            <p class="kr" style="font-weight: bold">
-              조재성. 홍연숙<span>딸</span> 조수현
-            </p>
+            <p class="kr">서상길. 이연숙<span>아들</span> 서지유</p>
+            <p class="kr">조재성. 홍연숙<span>딸</span> 조수현</p>
             <button class="kr contact-btn" @click="showDialog">연락하기</button>
           </div>
         </div>
+        <img src="~/assets/images/flower-2.png" class="flower_2" alt="" />
       </section>
       <section class="calendar">
-        <p class="en block-title">- Calendar -</p>
+        <p class="kr block-title">- Save The Date -</p>
         <div class="calendar-date">
-          <div class="header kr">8월 <span class="en">August</span></div>
+          <div class="header kr">8월 <span class="kr">August</span></div>
           <hr />
           <table border="0">
             <tbody>
@@ -119,6 +119,7 @@
           </table>
         </div>
       </section>
+      <section class="map"></section>
       <section class="message-board">
         <p class="en block-title">- Guest Book -</p>
         <input type="text" placeholder="이름 / name" v-model="boardData.name" />
@@ -250,7 +251,34 @@ const submit = async () => {
   }
 }
 
+
+const isPlay = ref(true)
+const isPause = ref(false)
+const handleAudio = (status: string) => {
+  if (status === 'play') {
+    isPlay.value = false
+    isPause.value = true
+    audio.value?.play()
+  } else {
+    isPause.value = false
+    isPlay.value = true
+    audio.value?.pause()
+  }
+}
+
+const audio = ref<null|HTMLAudioElement>(null)
+const playBtn = ref()
+const pauseBtn = ref()
+
 onMounted(() => {
   window.addEventListener("resize", checkScreenSize)
+  if(process.client) {
+    audio.value = document.querySelector("audio")
+    playBtn.value = document.querySelector("play-btn")
+    pauseBtn.value = document.querySelector("pause-btn")
+  }
+  // nextTick(() => {
+  //   audio.value?.play()
+  // })
 })
 </script>
