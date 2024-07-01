@@ -47,13 +47,24 @@ body {
 }
 
 main {
-  background-image: url(/assets/images/main_img.png);
+  background-image: url(/assets/images/main_img1.png);
   background-size: contain;
   background-repeat: no-repeat; 
   background-position: center;
+  height: 100vh;
   height: 100dvh;
+  height: -moz-available;
+  height: -webkit-fill-available;
   width: 100%;
   position: relative;
+  
+  &::before {
+    content: 'we are gonna get married.';
+    position: absolute;
+    bottom: 100px;
+    width: 100%;
+    left: 0;
+  }
   /* transform: translateX(-50%); */
   & .main-img {
     height: 100dvh;
@@ -131,6 +142,15 @@ main {
 .info {
   position: relative;
   overflow: hidden;
+  background-image: url(/assets/images/bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat; 
+  background-position: center;
+  height: 100vh;
+  height: 100dvh;
+  height: -moz-available;
+  height: -webkit-fill-available;
+  width: 100%;
   & .lottie-animation-container {
     position: absolute;
     top: 0;

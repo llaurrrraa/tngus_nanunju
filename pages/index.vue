@@ -3,11 +3,11 @@
     <div class="invite-inner">
       <main>
         <div class="main-title">
-          <div class="first">
+          <!-- <div class="first">
             <p class="kr" style="margin-right: 1.5rem">서지유</p>
             <p>|</p>
             <p class="kr" style="margin-left: 1.5rem">조수현</p>
-          </div>
+          </div> -->
           <div class="second">
             <!-- <p class="kr">2024년 8월 31일 (토) 저녁 5시 30분</p>
             <p class="kr">크레스트72</p> -->
@@ -15,7 +15,7 @@
         </div>
         <!-- <img class="main-img" src="~/assets/images/main_img.jpg" alt="" /> -->
         <div class="sub">
-          <p class="en sub-title">We're gonna get Married.</p>
+          <!-- <p class="en sub-title">We're gonna get Married.</p> -->
           <client-only>
             <Vue3Lottie
               animationLink="https://lottie.host/bbd048a3-ae9d-4afd-9aaf-0a4b5c27b77f/goFdbUMKrX.json"
@@ -33,7 +33,7 @@
             :width="170"
           />
         </client-only>
-        <img src="~/assets/images/bg.jpg" alt="" />
+        <!-- <img src="~/assets/images/bg.jpg" alt="" /> -->
         <div class="wording-wrapper">
           <p class="kr wording">
             지유를 행복하게 만드는 미소를 가진 수현이와 수현이의 손을 항상
