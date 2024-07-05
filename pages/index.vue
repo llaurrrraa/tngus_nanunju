@@ -119,6 +119,14 @@
           </table>
         </div>
       </section>
+      <section class="gallery">
+        <div class="gallery-container">
+          <img src="~/assets/images/main_img_1.png" alt="" @click="isShow = true">
+          <img src="~/assets/images/main_img_1.png" alt="">
+          <img src="~/assets/images/main_img_1.png" alt="">
+          <img src="~/assets/images/main_img_1.png" alt="">
+        </div>
+      </section>
       <section class="map">
         <p class="kr block-title" style="margin-bottom: 1rem">- Location -</p>
         <NaverMap
@@ -131,15 +139,15 @@
             zoom: 18,
           }"
         >
-        <NaverMarker
-        :latitude="37.5511378" :longitude="127.0028114" :onLoaded="onLoadMarker"
-        style="position: absolute;left: -25px;top: -35px"
-        >
-        <img class="marker" src="~/assets/images/marker.png" alt="map marker">
-      </NaverMarker>
-    </NaverMap>
-    <p class="kr-mono res">크레스트 72</p>
-    <div class="link-to-map">
+          <NaverMarker
+          :latitude="37.5511378" :longitude="127.0028114" :onLoaded="onLoadMarker"
+          style="position: absolute;left: -25px;top: -35px"
+          >
+          <img class="marker" src="~/assets/images/marker.png" alt="map marker">
+          </NaverMarker>
+        </NaverMap>
+        <p class="kr-mono res">크레스트 72</p>
+        <div class="link-to-map">
           <img src="~/assets/images/kakaomap_basic.png" alt="">
           <a href="https://map.kakao.com/link/map/서울 중구 장충단로 549,37.5511378,127.0028114" >지도를 자세히 보려면 여기를 눌러주세요</a>
         </div>
@@ -297,8 +305,24 @@ const playBtn = ref()
 const pauseBtn = ref()
 
 const onLoadMarker = (marker:naver.maps.Marker) => {
-  console.log('marker',marker);
 }
+
+// const isShow = ref(false)
+// const showModal = () => {
+//   isShow.value = false;
+// }
+// const { open, close } = useModal({
+//     component: ModalConfirm,
+//     attrs: {
+//       title: 'Hello World!',
+//       onConfirm() {
+//         close()
+//       },
+//     },
+//     slots: {
+//       default: '<p>UseModal: The content of the modal</p>',
+//     },
+//   })
 
 onMounted(() => {
   window.addEventListener("resize", checkScreenSize)
