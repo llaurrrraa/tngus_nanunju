@@ -42,6 +42,10 @@ body {
 .kr {
   font-family: "Hi Melody", sans-serif;
 }
+.kr-mono {
+  font-family: "Sunflower", sans-serif;
+}
+
 .en {
   font-family: "Playfair Display", serif;
 }
@@ -53,8 +57,9 @@ main {
   background-position: center;
   height: -moz-available;
   height: -webkit-fill-available;
+  /* min-height: 700px; */
   height: 100vh;
-  height: 100dvh;
+  /* height: 100dvh; */
   width: 100%;
   position: relative;
   & .icon-play, .icon-pause {
@@ -160,7 +165,7 @@ main {
     justify-content: center;
     margin-bottom: 1rem;
     font-size: 1.175rem;
-    color: #21979f;
+    color: var(--main-text);
     & div {
       display: flex;
       flex-direction: column;
@@ -227,7 +232,7 @@ main {
       padding: 0 1rem 3.25rem;
     }
     & p {
-      color: #21979f;
+      color: var(--main-text);
       word-break: keep-all;
       font-size: 1.05rem;
       line-height: 1.65;
@@ -236,7 +241,7 @@ main {
       }
     }
     & hr {
-      color: #21979f;
+      color: var(--main-text);
       width: 80%;
       margin: 0 auto;
     }
@@ -268,9 +273,9 @@ main {
 
 .contact-btn{
   padding: 0.75rem 3.5rem;
-  border: 0.5px solid #21979f;
+  border: 0.5px solid var(--main-text);
   color: #fff;
-  background-color: #21979f;
+  background-color: var(--main-text);
   border-radius: 0.5rem;
   font-size: 1.15rem;
   margin: 2.75rem 0.5rem;
@@ -331,7 +336,7 @@ main {
 }
 
 .calendar {
-  margin: 4rem 2rem 2rem;
+  margin: 4rem 2rem;
   & p {
     font-style: italic;
   }
@@ -339,7 +344,7 @@ main {
     & .header {
       font-size: 1.15rem;
       margin-bottom: 1rem;
-      color: #21979f;
+      color: var(--main-text);
       & span {
         letter-spacing: 1px;
       }
@@ -351,7 +356,7 @@ main {
       margin-top: 1rem;
       width: 100%;
       & .sun {
-        color: #21979f;
+        color: var(--main-text);
       }
       & tr {
         padding-bottom: 0.5rem;
@@ -363,7 +368,7 @@ main {
       }
       & .weddingDay {
         color: #fff;
-        background-color: #21979f;
+        background-color: var(--main-text);
         height: 38px;
         width: 38px;
         border-radius: 100%;
@@ -388,6 +393,42 @@ main {
           }
         }
       }
+    }
+  }
+}
+
+.map {
+  padding: 2rem 12px;
+  background-color: rgba(195, 209, 219, 0.3);
+  & p {
+    color: #000;
+  }
+  & .res {
+    color: rgb(137, 159, 176);
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 1.5rem auto 0.75rem;
+  }
+  & .naver-map {
+    border: 2px solid #8cb9da;
+    border-radius: 8px;
+  }
+  & .marker {
+    width: 45px;
+  }
+  & .link-to-map {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.5rem;
+    & img {
+      max-width: 1.5rem;
+      margin-right: 0.5rem;
+    }
+    & a {
+      font-size: 0.85rem;
+      color: rgb(137, 159, 176);
+      text-decoration: underline;
     }
   }
 }

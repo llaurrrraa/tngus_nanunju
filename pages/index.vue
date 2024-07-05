@@ -34,8 +34,8 @@
           <p class="kr">크레스트72</p>
         </div>
         <div class="info-images">
-          <img src="~/assets/images/sub_img.png" class="sub_img" alt="" />
-          <img src="~/assets/images/flower-2.png" class="flower_1" alt="" />
+          <img src="~/assets/images/sub_img.png" class="sub_img" alt="sub_img" />
+          <img src="~/assets/images/flower-2.png" class="flower_1" alt="flower_deco_1" />
         </div>
         <div class="wording-wrapper">
           <p class="kr wording">
@@ -52,7 +52,7 @@
             <button class="kr contact-btn" @click="showDialog">연락하기</button>
           </div>
         </div>
-        <img src="~/assets/images/flower-2.png" class="flower_2" alt="" />
+        <img src="~/assets/images/flower-2.png" class="flower_2" alt="flower_deco_2" />
       </section>
       <section class="calendar">
         <p class="kr block-title">- Save The Date -</p>
@@ -119,7 +119,31 @@
           </table>
         </div>
       </section>
-      <section class="map"></section>
+      <section class="map">
+        <p class="kr block-title" style="margin-bottom: 1rem">- Location -</p>
+        <NaverMap
+        class="naver-map"
+        style="width: 100%; height: 30vh"
+        client-id="f4wfl3jf7e"
+        :mapOptions="{
+            latitude: 37.5511375,
+            longitude: 127.0028114,
+            zoom: 18,
+          }"
+        >
+        <NaverMarker
+        :latitude="37.5511378" :longitude="127.0028114" :onLoaded="onLoadMarker"
+        style="position: absolute;left: -25px;top: -35px"
+        >
+        <img class="marker" src="~/assets/images/marker.png" alt="map marker">
+      </NaverMarker>
+    </NaverMap>
+    <p class="kr-mono res">크레스트 72</p>
+    <div class="link-to-map">
+          <img src="~/assets/images/kakaomap_basic.png" alt="">
+          <a href="https://map.kakao.com/link/map/서울 중구 장충단로 549,37.5511378,127.0028114" >지도를 자세히 보려면 여기를 눌러주세요</a>
+        </div>
+      </section>
       <section class="message-board">
         <p class="en block-title">- Guest Book -</p>
         <input type="text" placeholder="이름 / name" v-model="boardData.name" />
@@ -143,6 +167,8 @@
 
 <script setup lang="ts">
 import Swal from "sweetalert2"
+import { NaverMap, NaverMarker } from '@naver-maps/vue'
+
 const mobile = ref(false)
 const checkScreenSize = () => {
   if (process.client && window.innerWidth <= 768) return (mobile.value = true)
@@ -270,6 +296,10 @@ const audio = ref<null|HTMLAudioElement>(null)
 const playBtn = ref()
 const pauseBtn = ref()
 
+const onLoadMarker = (marker:naver.maps.Marker) => {
+  console.log('marker',marker);
+}
+
 onMounted(() => {
   window.addEventListener("resize", checkScreenSize)
   if(process.client) {
@@ -277,8 +307,18 @@ onMounted(() => {
     playBtn.value = document.querySelector("play-btn")
     pauseBtn.value = document.querySelector("pause-btn")
   }
-  // nextTick(() => {
-  //   audio.value?.play()
-  // })
+  // const script = document.createElement("script");
+  // script.src= "https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=f4wfl3jf7e";
+  // script.async = true;
+  // script.defer = true;
+  // document.head.appendChild(script);
+
+  // script.onload = () => {
+  //   // 네이버 지도 생성
+  //   new window.naver.maps.Map("map", {
+  //     center: new window.naver.maps.LatLng(37.551135499999454, 126.99861002157358),
+  //     zoom: 10
+  //   });
+  // };
 })
 </script>

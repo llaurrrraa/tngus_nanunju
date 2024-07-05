@@ -12,6 +12,7 @@
     "gen-deploy": "npm run generate && npm run deploy"
   },
   "dependencies": {
+    "@naver-maps/vue": "^1.0.0",
     "mongoose": "^8.4.3",
     "nuxt": "^3.12.2",
     "sweetalert2": "^11.12.0",
@@ -20,6 +21,7 @@
     "vue3-lottie": "^3.3.0"
   },
   "devDependencies": {
+    "@types/navermaps": "^3.7.5",
     "gh-pages": "^6.1.1"
   }
 }
