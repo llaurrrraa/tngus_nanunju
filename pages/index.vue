@@ -49,7 +49,7 @@
           <div class="contact">
             <p class="kr">서상길. 이연숙<span>아들</span> 서지유</p>
             <p class="kr">조재성. 홍연숙<span>딸</span> 조수현</p>
-            <button class="kr contact-btn" @click="showDialog">연락하기</button>
+            <button class="kr contact-btn" @click="showContent">연락하기</button>
           </div>
         </div>
         <img src="~/assets/images/flower-2.png" class="flower_2" alt="flower_deco_2" />
@@ -184,7 +184,7 @@ const checkScreenSize = () => {
 }
 checkScreenSize()
 
-const showDialog = () => {
+const showContent = () => {
   Swal.fire({
     title: "연락하기",
     width: 550,
@@ -213,10 +213,13 @@ const showDialog = () => {
   })
 }
 
-// const { data: boardList, refresh } = (await useFetch("/api/board")) as {
-//   [key: string]: any
-// }
+const showImage = () => {
+  Swal.fire({
+    
+  })
+}
 
+// Google api
 const { data: test, refresh } = (await useFetch(
   "https://script.google.com/macros/s/AKfycbzH6LnDHOhyQtTaB01yHRhcWk0cQ_fUUMxuLkr10gA04gyvWTKXAwkHMuXrompecUigKQ/exec",
   { method: "get" }
@@ -242,21 +245,6 @@ const addUser = async (data: any) => {
     }
   )
 }
-
-// const addData = async () => {
-//   try {
-//     return await $fetch("/api/board/add", {
-//       method: "POST",
-//       body: {
-//         name: boardData.value.name,
-//         message: boardData.value.message,
-//         created_time: new Date(),
-//       },
-//     })
-//   } catch (error) {
-//     console.error(error)
-//   }
-// }
 
 const convertTime = (date: any) => {
   const year = date.getFullYear()
