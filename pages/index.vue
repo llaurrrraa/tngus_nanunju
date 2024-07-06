@@ -122,28 +122,58 @@
       <section class="gallery">
         <p class="kr block-title">- Gallery -</p>
         <div class="gallery-container">
-          <template v-for="(img, index) in galleryImg" :key="index" >
+          <div v-for="(img, index) in galleryImg" :key="index">
             <NuxtImg :src="img.src" :alt="`img-${index+1}`" @click="showImage(index)" />
-            <v-dialog v-model="imageIsShow[index]" max-width="500" class="image-dialog">
-              <template v-slot:default="{ isActive }">
-                <v-card>
-                  <v-card-title class="d-flex justify-space-between align-center">
-                      <div></div>
-                      <div class="img-index"><p class="en">{{ index+1 }} / {{ galleryImg.length }}</p></div>
-                      <v-btn
-                        icon="fa fa-xmark"
-                        variant="text"
-                        color="#afafaf"
-                        @click="isActive.value = false"
-                      ></v-btn>
-                    </v-card-title>
-                    <v-card-item>
+          </div>
+          <v-dialog v-model="imageDialogVisible" max-width="500" class="image-dialog">
+            <v-card>
+              <v-card-title class="d-flex justify-end align-center">
+                <v-btn
+                  icon="fa fa-xmark"
+                  variant="text"
+                  color="#afafaf"
+                  @click="imageDialogVisible = false"
+                ></v-btn>
+              </v-card-title>
+              <v-card-item>
+                <nuxt-error-boundary @error="() => {}">
+                  <!-- Swiper -->
+                  <Swiper
+                    id="collection-swiper"
+                    :modules="[
+                      SwiperPagination,
+                      SwiperNavigation,
+                      SwiperKeyboard,
+                      SwiperA11y,
+                      SwiperFreeMode
+                    ]"
+                    :navigation="true"
+                    :pagination="{
+                      type: 'fraction'
+                    }"
+                    :keyboard="{
+                      enabled: true
+                    }"
+                    :a11y="{
+                      enabled: true,
+                      prevSlideMessage: '上一頁',
+                      nextSlideMessage: '下一頁'
+                    }"
+                    :freemode="true"
+                    :observer="true"
+                    :grab-cursor="true"
+                    :space-between="20"
+                    :initial-slide="currentImageIndex"
+                    @swiper="onSwiperInitialized"
+                  >
+                    <SwiperSlide v-for="(img, index) in galleryImg" :key="index">
                       <NuxtImg class="modal-img" :src="img.src" :alt="`img-${index+1}`" />
-                    </v-card-item>
-                </v-card>
-              </template>
-            </v-dialog>
-          </template>
+                    </SwiperSlide>
+                  </Swiper>
+                </nuxt-error-boundary>
+              </v-card-item>
+            </v-card>
+          </v-dialog>
         </div>
       </section>
       <section class="map">
@@ -166,6 +196,7 @@
           </NaverMarker>
         </NaverMap>
         <p class="kr-mono res">크레스트 72</p>
+        <p class="kr-mono res-info">서울 중구 장충단로 72</p>
         <div class="link-to-map">
           <img src="~/assets/images/kakaomap_basic.png" alt="">
           <a href="https://map.kakao.com/link/map/서울 중구 장충단로 549,37.5511378,127.0028114" >지도를 자세히 보려면 여기를 눌러주세요</a>
@@ -195,6 +226,7 @@
 <script setup lang="ts">
 import Swal from "sweetalert2"
 import { NaverMap, NaverMarker } from '@naver-maps/vue'
+import type { Swiper as SwiperType } from 'swiper'
 
 const mobile = ref(false)
 const checkScreenSize = () => {
@@ -266,14 +298,25 @@ const galleryImg = ref([
   { src: '/images/31.jpg' },
 ])
 
-const imageIsShow = ref<any[]>([])
-const showImage = (id: any) => {
-  console.log(id);
-  
-  imageIsShow.value[id] = true
-  console.log(imageIsShow.value[id]);
-  
+const imageDialogVisible = ref(false)
+const currentImageIndex = ref(0)
+let swiperInstance: SwiperType | null = null
+
+const showImage = (index: number) => {
+  currentImageIndex.value = index
+  imageDialogVisible.value = true
 }
+
+const onSwiperInitialized = (swiper: SwiperType) => {
+  swiperInstance = swiper
+}
+
+// 當 dialog 打開時，確保 Swiper 滑動到正確的圖片
+watch(imageDialogVisible, (newValue) => {
+  if (newValue && swiperInstance) {
+    swiperInstance.slideTo(currentImageIndex.value, 0)
+  }
+})
 
 // Google api
 const { data: test, refresh } = (await useFetch(
