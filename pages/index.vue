@@ -118,6 +118,7 @@
             </tbody>
           </table>
         </div>
+        <img src="~/assets/images/flower-3.png" class="flower_3" alt="flower_deco_2" />
       </section>
       <section class="gallery">
         <p class="kr block-title">- Gallery -</p>
@@ -175,31 +176,68 @@
             </v-card>
           </v-dialog>
         </div>
+        <img src="~/assets/images/flower-3.png" class="flower_3" alt="flower_deco_2" />
       </section>
       <section class="map">
         <p class="kr block-title" style="margin-bottom: 1rem">- Location -</p>
-        <NaverMap
-        class="naver-map"
-        style="width: 100%; height: 30vh"
-        client-id="f4wfl3jf7e"
-        :mapOptions="{
-            latitude: 37.5511375,
-            longitude: 127.0028114,
-            zoom: 18,
-          }"
-        >
-          <NaverMarker
-          :latitude="37.5511378" :longitude="127.0028114" :onLoaded="onLoadMarker"
-          style="position: absolute;left: -25px;top: -35px"
+        <div class="map-container">
+          <p class="kr-mono res">크레스트 72</p>
+          <p class="kr-mono res-info">서울 중구 장충단로 72</p>
+          <div class="link-to-map">
+            <img src="~/assets/images/kakaomap_basic.png" alt="">
+            <a href="https://map.kakao.com/link/map/서울 중구 장충단로 549,37.5511378,127.0028114" >지도를 자세히 보려면 여기를 눌러주세요</a>
+          </div>
+          <NaverMap
+          class="naver-map"
+          style="width: 100%; height: 30vh"
+          client-id="f4wfl3jf7e"
+          :mapOptions="{
+              latitude: 37.5511375,
+              longitude: 127.0028114,
+              zoom: 18,
+            }"
           >
-          <img class="marker" src="~/assets/images/marker.png" alt="map marker">
-          </NaverMarker>
-        </NaverMap>
-        <p class="kr-mono res">크레스트 72</p>
-        <p class="kr-mono res-info">서울 중구 장충단로 72</p>
-        <div class="link-to-map">
-          <img src="~/assets/images/kakaomap_basic.png" alt="">
-          <a href="https://map.kakao.com/link/map/서울 중구 장충단로 549,37.5511378,127.0028114" >지도를 자세히 보려면 여기를 눌러주세요</a>
+            <NaverMarker
+            :latitude="37.5511378" :longitude="127.0028114" :onLoaded="onLoadMarker"
+            style="position: absolute;left: -25px;top: -35px"
+            >
+            <img class="marker" src="~/assets/images/marker.png" alt="map marker">
+            </NaverMarker>
+          </NaverMap>
+          <div class="trans">
+            <div class="tr-tool metro">
+              <div class="title">
+                <img src="~/assets/images/metro.png" alt="metro">
+                <p class="kr-mono">지하철</p>
+              </div>
+              <p class="content">
+                3호선 동대입구역 6번출구에서<br/> 
+                셔틀버스 15분간격 운행 <br/>
+                ( 오전시간 부터 횟수제한 없이 15분 간격으로 순환 셔틀버스 운행합니다. ) 
+              </p>
+            </div>
+            <div class="tr-tool bus">
+              <div class="title">
+                <img src="~/assets/images/bus.png" alt="bus">
+                <p class="kr-mono">버스</p>
+              </div>
+              <p class="content">
+                - 국립극장 앞 하차 <br/>
+                - 간선버스(파랑색) 420번 <br/>
+                - 남산순환버스(녹색) 01번 <br/>
+              </p>
+            </div>
+            <div class="tr-tool bus">
+              <div class="title">
+                <img src="~/assets/images/car.png" alt="car">
+                <p class="kr-mono">자가용</p>
+              </div>
+              <p class="content">
+                - 대형 주차시설 (800대 가능)<br/>
+                - 국립극장 맞은편 반얀트리 옆 위치<br/>
+              </p>
+            </div>
+          </div>
         </div>
       </section>
       <section class="message-board">

@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   modules: ["@nuxt/image", "vuetify-nuxt-module", 'nuxt-swiper'],
   vuetify: {
     vuetifyOptions: {
-      components: ['VDialog', 'VBtn', 'VIcon'],
+      components: ['VDialog', 'VBtn', 'VIcon', 'VExpansionPanels'],
       icons: {
         defaultSet: 'fa'
       }

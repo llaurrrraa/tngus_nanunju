@@ -314,7 +314,7 @@ main {
 }
 
 .calendar {
-  margin: 4rem 2rem 5rem !important;
+  margin: 4rem 2rem!important;
   & p {
     font-style: italic;
   }
@@ -375,8 +375,15 @@ main {
   }
 }
 
+.flower_3 {
+  width: 50px;
+  margin-top: 2.75rem !important;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
 .gallery {
-  margin-bottom: 4rem !important;
+  margin-bottom: 3rem !important;
   & .block-title {
     margin-bottom: 0 !important;
   }
@@ -417,9 +424,14 @@ main {
 }
 
 .map {
-  padding: 2rem 12px !important;
-  background-color: rgba(195, 209, 219, 0.3);
   margin-bottom: 2rem !important;
+  & .block-title {
+    margin-bottom: 1rem !important;
+  }
+  & .map-container {
+    background-color: rgba(195, 209, 219, 0.3);
+    padding: 1.5rem 0 2rem!important;
+  }
   & p {
     color: #000;
   }
@@ -427,16 +439,16 @@ main {
     color: rgb(137, 159, 176);
     font-size: 1.25rem;
     font-weight: bold;
-    margin: 1.5rem auto 0.75rem !important;
+    margin: 0.75rem auto!important;
   }
   & .res-info {
     color: rgb(137, 159, 176);
-    font-size: 0.85rem;
-    margin-bottom: 1rem !important;
+    font-size: 0.95rem;
+    font-weight: bold;
+    margin-bottom: 0.75rem !important;
   }
   & .naver-map {
-    /* border: 2px solid #8cb9da; */
-    border-radius: 8px;
+    border: 1px solid #8cb9da;
   }
   & .marker {
     width: 45px;
@@ -445,15 +457,48 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 0.5rem !important;
+    margin: 1.5rem auto 1rem !important;
     & img {
       max-width: 1.5rem;
-      margin-right: 0.5rem;
+      margin-right: 0.5rem !important;
     }
     & a {
       font-size: 0.85rem;
-      color: rgb(137, 159, 176);
+      color: rgb(137, 137, 137);
       text-decoration: underline;
+    }
+  }
+  & .tr-tool {
+    margin: 0 4rem !important;
+    & .title {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin-top: 2rem !important;
+      & img {
+        width: 25px;
+        margin-right: 0.75rem !important;
+      }
+      & p {
+        font-size: 1.25rem !important;
+        color: rgb(92, 108, 120);
+      }
+      &::after{
+        content: '';
+        position: absolute;
+        width: 30%;
+        height: 0.5px;
+        background: rgb(92, 108, 120);
+        /* top: -10; */
+        left: 0;
+        transform: translateY(25px);
+      }
+    }
+    & .content {
+      margin-top: 1.75rem !important;
+      text-align: left;
+      color: rgb(92, 108, 120);
+      line-height: 1.5;
     }
   }
 }
