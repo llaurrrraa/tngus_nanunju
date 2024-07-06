@@ -240,6 +240,73 @@
           </div>
         </div>
       </section>
+      <section class="account">
+        <img src="~/assets/images/couple.png" class="couple" alt="flower_deco_2" />
+        <p class="kr block-title">- 마음 전하는 곳 -</p>
+        <div style="margin-bottom: 0.5rem">
+          <v-expansion-panels>
+            <v-expansion-panel>
+              <v-expansion-panel-title>신랑측 계좌번호</v-expansion-panel-title>
+              <v-expansion-panel-text class="content">
+                <div class="content-info">
+                  <div style="display: flex;align-items: center; justify-content: space-between; margin-bottom: 0.5rem">
+                    <p class="kr-mono">신한 110-411-483439</p>
+                    <v-btn size="small" variant="tonal">복사</v-btn>
+                  </div>
+                  <p class="kr-mono" style="font-weight: bold;">서지유</p>
+                </div>
+                <div class="content-info">
+                  <div style="display: flex;align-items: center; justify-content: space-between; margin-bottom: 0.5rem">
+                    <p class="kr-mono">신한 110-531-224600</p>
+                    <v-btn size="small" variant="tonal">복사</v-btn>
+                  </div>
+                  <p class="kr-mono" style="font-weight: bold;">서상길</p>
+                </div>
+                <div class="content-info">
+                  <div style="display: flex;align-items: center; justify-content: space-between; margin-bottom: 0.5rem">
+                    <p class="kr-mono">신한 110-573-254041</p>
+                    <v-btn size="small" variant="tonal">복사</v-btn>
+                  </div>
+                  <p class="kr-mono" style="font-weight: bold;">이연숙</p>
+                </div>
+              </v-expansion-panel-text>
+            </v-expansion-panel>
+          </v-expansion-panels>
+        </div>
+        <div>
+          <v-expansion-panels>
+            <v-expansion-panel>
+              <v-expansion-panel-title>신부측 계좌번호</v-expansion-panel-title>
+              <v-expansion-panel-text class="content">
+                <div class="content-info">
+                  <div style="display: flex;align-items: center; justify-content: space-between; margin-bottom: 0.5rem">
+                    <p class="kr-mono">우리 1002-152-991519</p>
+                    <v-btn size="small" variant="tonal">복사</v-btn>
+                  </div>
+                  <p class="kr-mono" style="font-weight: bold;">조수현</p>
+                </div>
+                <div class="content-info">
+                  <div style="display: flex;align-items: center; justify-content: space-between; margin-bottom: 0.5rem">
+                    <p class="kr-mono">우리 1002-442-118277</p>
+                    <v-btn size="small" variant="tonal">복사</v-btn>
+                  </div>
+                  <p class="kr-mono" style="font-weight: bold;">조재성</p>
+                </div>
+                <div class="content-info">
+                  <div style="display: flex;align-items: center; justify-content: space-between; margin-bottom: 0.5rem">
+                    <p class="kr-mono">우리 597-124718-02-003</p>
+                    <v-btn size="small" variant="tonal">복사</v-btn>
+                  </div>
+                  <p class="kr-mono" style="font-weight: bold;">홍연숙</p>
+                </div>
+              </v-expansion-panel-text>
+            </v-expansion-panel>
+          </v-expansion-panels>
+        </div>
+      </section>
+      <section class="notice">
+        
+      </section>
       <section class="message-board">
         <p class="en block-title">- Guest Book -</p>
         <input type="text" placeholder="이름 / name" v-model="boardData.name" />
