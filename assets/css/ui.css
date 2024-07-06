@@ -149,19 +149,11 @@ main {
 
 
 .info {
-  /* background-image: url(/assets/images/bg.jpg);
-  background-size: cover;
-  background-repeat: no-repeat; 
-  background-position: center;
-  background-attachment: fixed;
-  height: -moz-available;
-  height: -webkit-fill-available;
-  height: 100vh; */
   & .first {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1rem;
+    margin-bottom: 1rem !important;
     font-size: 1.175rem;
     color: var(--main-text);
     & div {
@@ -182,7 +174,7 @@ main {
   }
   & .second {
     & p {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.5rem !important;
       font-size: 1rem;
     }
   }
@@ -194,45 +186,37 @@ main {
     transform: translateX(-50%);
   }
   & .info-images {
-    margin-top: 2rem;
+    margin-top: 2rem !important;
     display: flex;
     flex-direction: column;
     align-items: center;
     & .flower_1 {
       max-width: 50px;
-      margin: 2rem auto 1rem;
+      margin: 2rem auto 1rem !important;
     }
     & .sub_img {
       height: 300px;
       border-radius: 10px;
       width: auto;
       object-fit: cover;
-      /* -webkit-filter: blur(100px);
-      -moz-filter: blur(100px);
-      -ms-filter: blur(100px);
-      transform: translateX(-50px);
-      z-index: 0;
-      filter: blur(2px);
-      background-size: cover;
-      background-position: center; */
     }
   }
   & .flower_2 {
     max-width: 50px;
   }
   & .wording-wrapper {
-    margin: 0.5rem 1.85rem 1rem;
+    margin: 0.5rem 1.85rem 1rem !important;
     z-index: 1;
     top: 10rem;
     background-color: rgba(255,255,255,0.2);
     border-radius: 6px;
     & .wording {
-      padding: 0 1rem 3.25rem;
+      padding: 0 0.5rem 3.25rem !important;
     }
     & p {
       color: var(--main-text);
       word-break: keep-all;
-      font-size: 1.05rem;
+      font-size: 1.25rem;
       line-height: 1.65;
       @media screen and (width <= 768px) {
         /* font-size: 1.25rem; */
@@ -241,12 +225,12 @@ main {
     & hr {
       color: var(--main-text);
       width: 80%;
-      margin: 0 auto;
+      margin: 0 auto !important;
     }
     & .contact {
       width: 70%;
-      margin: 0 auto;
-      padding-top: 3rem;
+      margin: 0 auto !important;
+      padding-top: 3rem !important;
       & p {
         display: flex;
         justify-content: space-around;
@@ -270,19 +254,15 @@ main {
 }
 
 .contact-btn{
-  padding: 0.75rem 3.5rem;
-  border: 0.5px solid var(--main-text);
-  color: #fff;
-  background-color: var(--main-text);
+  font-family: "Hi Melody", sans-serif !important;
+  padding: 0.65rem 2.75rem !important;
+  border: 0.5px solid var(--main-text) !important;
+  color: #fff !important;
+  background-color: var(--main-text) !important;
   border-radius: 0.5rem;
-  font-size: 1.15rem;
-  margin: 2.75rem 0.5rem;
-  line-height: 100%;
-  letter-spacing: 5%;
-  & svg {
-    font-size: 1rem;
-    margin-right: 0.25rem;
-  }
+  font-size: 1.5rem !important;
+  margin: 2.75rem 0.5rem !important;
+  letter-spacing: 5% !important;
 }
 
 .swal2-container {
@@ -328,30 +308,30 @@ main {
 }
 
 .block-title {
-  font-size: 1.35rem;
+  font-size: 1.35rem !important;
   font-style: italic;
-  margin-bottom: 2rem;
+  margin-bottom: 2rem !important;
 }
 
 .calendar {
-  margin: 4rem 2rem;
+  margin: 4rem 2rem 5rem !important;
   & p {
     font-style: italic;
   }
   & .calendar-date {
     & .header {
-      font-size: 1.15rem;
-      margin-bottom: 1rem;
+      font-size: 1.15rem !important;
+      margin-bottom: 1rem !important;
       color: var(--main-text);
       & span {
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
     }
     hr {
       color: #dddddd;
     }
     & table {
-      margin-top: 1rem;
+      margin-top: 1rem !important;
       width: 100%;
       & .sun {
         color: var(--main-text);
@@ -396,8 +376,11 @@ main {
 }
 
 .gallery {
-  .gallery-container {
-    padding: 1rem;
+  & .block-title {
+    margin-bottom: 0 !important;
+  }
+  & .gallery-container {
+    padding: 1rem !important;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -406,7 +389,22 @@ main {
       height: 100px;
       border-radius: 0.5rem;
       object-fit: cover;
-      margin: 0.5rem;
+      margin: 0.5rem !important;
+    }
+  }
+}
+.image-dialog {
+  & .v-card-title {
+    & .img-index {
+      margin-left: 1.5rem !important;
+      color: #7397b1;
+    }
+  }
+  & .v-card-item__content {
+    & .modal-img {
+      width: 100%;
+      height: auto;
+      object-fit: contain !important;
     }
   }
 }

@@ -4,7 +4,15 @@ export default defineNuxtConfig({
   css: [
     '@/assets/css/style.css',
   ],
-  // modules: ['@nuxt/ui'],
+  modules: ["@nuxt/image", "vuetify-nuxt-module"],
+  vuetify: {
+    vuetifyOptions: {
+      components: ['VDialog', 'VBtn', 'VIcon'],
+      icons: {
+        defaultSet: 'fa'
+      }
+    }
+  },
   "app": {
     "head": {
       "viewport": "width=device-width, initial-scale=1",
@@ -22,12 +30,15 @@ export default defineNuxtConfig({
     baseURL: '/tngus_nanunju/',
     buildAssetsDir: 'assets' 
   },
-  // nitro: {
-  //   plugins: ["~/server/db/index.js"],
-  //   preset: "vercel"
-  // },
   runtimeConfig: {
-    dbURL: process.env.DATABASE_URL
+    public: {
+      baseUrl: process.env.NUXT_PUBLIC_BASE_URL || 'http://localhost:3000',
+      websiteName: process.env.NUXT_PUBLIC_WEBSITE_NAME || '서지유 🤍 조수현',
+      websiteDescription: process.env.NUXT_PUBLIC_WEBSITE_DESCRIPTION || '서지유 🤍 조수현',
+      apiUrl: process.env.NUXT_API_URL,
+      imgUrl: process.env.NUXT_PICTURE_URL || 'http://localhost:3000',
+    },
+    dbURL: process.env.DATABASE_URL,
   },
   routeRules: {
     // '/': { prerender: true, isr: true },

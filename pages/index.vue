@@ -120,11 +120,30 @@
         </div>
       </section>
       <section class="gallery">
+        <p class="kr block-title">- Gallery -</p>
         <div class="gallery-container">
-          <img src="~/assets/images/main_img_1.png" alt="" @click="isShow = true">
-          <img src="~/assets/images/main_img_1.png" alt="">
-          <img src="~/assets/images/main_img_1.png" alt="">
-          <img src="~/assets/images/main_img_1.png" alt="">
+          <template v-for="(img, index) in galleryImg" :key="index" >
+            <NuxtImg :src="img.src" :alt="`img-${index+1}`" @click="showImage(index)" />
+            <v-dialog v-model="imageIsShow[index]" max-width="500" class="image-dialog">
+              <template v-slot:default="{ isActive }">
+                <v-card>
+                  <v-card-title class="d-flex justify-space-between align-center">
+                      <div></div>
+                      <div class="img-index"><p class="en">{{ index+1 }} / {{ galleryImg.length }}</p></div>
+                      <v-btn
+                        icon="fa fa-xmark"
+                        variant="text"
+                        color="#afafaf"
+                        @click="isActive.value = false"
+                      ></v-btn>
+                    </v-card-title>
+                    <v-card-item>
+                      <NuxtImg class="modal-img" :src="img.src" :alt="`img-${index+1}`" />
+                    </v-card-item>
+                </v-card>
+              </template>
+            </v-dialog>
+          </template>
         </div>
       </section>
       <section class="map">
@@ -213,10 +232,47 @@ const showContent = () => {
   })
 }
 
-const showImage = () => {
-  Swal.fire({
-    
-  })
+const galleryImg = ref([
+  { src: '/images/1.jpg' },
+  { src: '/images/2.jpg' },
+  { src: '/images/3.jpg' },
+  { src: '/images/4.jpg' },
+  { src: '/images/5.jpg' },
+  { src: '/images/6.jpg' },
+  { src: '/images/7.jpg' },
+  { src: '/images/8.jpg' },
+  { src: '/images/9.jpg' },
+  { src: '/images/10.jpg' },
+  { src: '/images/11.jpg' },
+  { src: '/images/12.jpg' },
+  { src: '/images/13.jpg' },
+  { src: '/images/14.jpg' },
+  { src: '/images/15.jpg' },
+  { src: '/images/16.jpg' },
+  { src: '/images/17.jpg' },
+  { src: '/images/18.jpg' },
+  { src: '/images/19.jpg' },
+  { src: '/images/20.jpg' },
+  { src: '/images/21.jpg' },
+  { src: '/images/22.jpg' },
+  { src: '/images/23.jpg' },
+  { src: '/images/24.jpg' },
+  { src: '/images/25.jpg' },
+  { src: '/images/26.jpg' },
+  { src: '/images/27.jpg' },
+  { src: '/images/28.jpg' },
+  { src: '/images/29.jpg' },
+  { src: '/images/30.jpg' },
+  { src: '/images/31.jpg' },
+])
+
+const imageIsShow = ref<any[]>([])
+const showImage = (id: any) => {
+  console.log(id);
+  
+  imageIsShow.value[id] = true
+  console.log(imageIsShow.value[id]);
+  
 }
 
 // Google api

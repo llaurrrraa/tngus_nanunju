@@ -12,13 +12,16 @@
     "gen-deploy": "npm run generate && npm run deploy"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@naver-maps/vue": "^1.0.0",
+    "@nuxt/image": "^1.7.0",
     "mongoose": "^8.4.3",
     "nuxt": "^3.12.2",
     "sweetalert2": "^11.12.0",
     "vue": "^3.4.29",
     "vue-router": "^4.3.3",
-    "vue3-lottie": "^3.3.0"
+    "vue3-lottie": "^3.3.0",
+    "vuetify-nuxt-module": "^0.14.1"
   },
   "devDependencies": {
     "@types/navermaps": "^3.7.5",
