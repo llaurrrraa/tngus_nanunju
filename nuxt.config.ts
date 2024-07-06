@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   modules: ["@nuxt/image", "vuetify-nuxt-module", 'nuxt-swiper'],
   vuetify: {
     vuetifyOptions: {
-      components: ['VDialog', 'VBtn', 'VIcon', 'VExpansionPanels'],
+      components: ['VDialog', 'VBtn', 'VIcon', 'VExpansionPanels', 'VImg'],
       icons: {
         defaultSet: 'fa'
       }
@@ -43,5 +43,16 @@ export default defineNuxtConfig({
   routeRules: {
     // '/': { prerender: true, isr: true },
     '/api/**': { cors: true },
+  },
+  // image: {
+  //   dir: 'public/images'
+  // }
+  nitro: {
+    prerender: {
+      routes: [
+        '/public/images/1.jpg',
+        // etc.
+      ]
+    }
   }
 })

@@ -305,7 +305,7 @@
         </div>
       </section>
       <section class="notice">
-        
+
       </section>
       <section class="message-board">
         <p class="en block-title">- Guest Book -</p>
@@ -369,6 +369,8 @@ const showContent = () => {
   })
 }
 
+const runtimeConfig = useRuntimeConfig()
+const imgUrl = ref(runtimeConfig.public.imgUrl)
 const galleryImg = ref([
   { src: '/images/1.jpg' },
   { src: '/images/2.jpg' },
