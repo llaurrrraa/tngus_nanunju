@@ -47,9 +47,9 @@
           </p>
           <hr />
           <div class="contact">
-            <p class="kr">서상길. 이연숙<span>아들</span> 서지유</p>
-            <p class="kr">조재성. 홍연숙<span>딸</span> 조수현</p>
-            <button class="kr contact-btn" @click="showContent">연락하기</button>
+            <p class="kr-mono">서상길. 이연숙<span>아들</span> 서지유</p>
+            <p class="kr-mono">조재성. 홍연숙<span>딸</span> 조수현</p>
+            <button class="kr-mono contact-btn" @click="showContent">연락하기</button>
           </div>
         </div>
         <img src="~/assets/images/flower-2.png" class="flower_2" alt="flower_deco_2" />
@@ -312,22 +312,22 @@
               <v-expansion-panel-text class="content">
                 <div class="content-info">
                   <div style="display: flex;align-items: center; justify-content: space-between; margin-bottom: 0.5rem">
-                    <p class="kr-mono">신한 110-411-483439</p>
-                    <v-btn size="small" variant="tonal">복사</v-btn>
+                    <p class="kr-mono">신한 <span id="">110-411-483439</span></p>
+                    <!-- <v-btn size="small" variant="tonal">복사</v-btn> -->
                   </div>
                   <p class="kr-mono" style="font-weight: bold;">서지유</p>
                 </div>
                 <div class="content-info">
                   <div style="display: flex;align-items: center; justify-content: space-between; margin-bottom: 0.5rem">
                     <p class="kr-mono">신한 110-531-224600</p>
-                    <v-btn size="small" variant="tonal">복사</v-btn>
+                    <!-- <v-btn size="small" variant="tonal">복사</v-btn> -->
                   </div>
                   <p class="kr-mono" style="font-weight: bold;">서상길</p>
                 </div>
                 <div class="content-info">
                   <div style="display: flex;align-items: center; justify-content: space-between; margin-bottom: 0.5rem">
                     <p class="kr-mono">신한 110-573-254041</p>
-                    <v-btn size="small" variant="tonal">복사</v-btn>
+                    <!-- <v-btn size="small" variant="tonal">복사</v-btn> -->
                   </div>
                   <p class="kr-mono" style="font-weight: bold;">이연숙</p>
                 </div>
@@ -343,21 +343,21 @@
                 <div class="content-info">
                   <div style="display: flex;align-items: center; justify-content: space-between; margin-bottom: 0.5rem">
                     <p class="kr-mono">우리 1002-152-991519</p>
-                    <v-btn size="small" variant="tonal">복사</v-btn>
+                    <!-- <v-btn size="small" variant="tonal">복사</v-btn> -->
                   </div>
                   <p class="kr-mono" style="font-weight: bold;">조수현</p>
                 </div>
                 <div class="content-info">
                   <div style="display: flex;align-items: center; justify-content: space-between; margin-bottom: 0.5rem">
                     <p class="kr-mono">우리 1002-442-118277</p>
-                    <v-btn size="small" variant="tonal">복사</v-btn>
+                    <!-- <v-btn size="small" variant="tonal">복사</v-btn> -->
                   </div>
                   <p class="kr-mono" style="font-weight: bold;">조재성</p>
                 </div>
                 <div class="content-info">
                   <div style="display: flex;align-items: center; justify-content: space-between; margin-bottom: 0.5rem">
                     <p class="kr-mono">우리 597-124718-02-003</p>
-                    <v-btn size="small" variant="tonal">복사</v-btn>
+                    <!-- <v-btn size="small" variant="tonal">복사</v-btn> -->
                   </div>
                   <p class="kr-mono" style="font-weight: bold;">홍연숙</p>
                 </div>
@@ -368,25 +368,106 @@
       </section>
       <section class="notice">
         <img src="~/assets/images/marriage.png" class="marriage" alt="marriage">
-        <p class="en block-title">- Notice -</p>
+        <p class="en block-title" style="font-weight: bold;">- Notice -</p>
+        <p class="kr-mono content">하객분들께, 바쁘신 와중에도 <br />
+            자리에 참석해 주셔서 정말 감사합니다. <br/><br/>
+            이 진실한 서약의 자리가 부끄럽지 않게 서로만을 바라보며 행복하게 살겠습니다. </p>
       </section>
-      <section class="message-board">
-        <p class="en block-title">- Guest Book -</p>
-        <input type="text" placeholder="이름 / name" v-model="boardData.name" />
-        <textarea
-          class="input-textarea"
-          placeholder="메세지 / message"
-          v-model="boardData.message"
-        ></textarea>
-        <button class="submit" @click="submit">등록하기 Submit</button>
+      <section class="photo">
+        <img src="~/assets/images/photo.png" class="photo-img" alt="photoboth">
+        <p class="kr block-title">- 포토부스 이용 안내 -</p>
+        <p class="kr-mono content">
+          귀한 발걸음 해주신 분들의
+          따뜻한 미소를 남길 수 있는 포토부스를 준비하였습니다.<br/><br/>
+          축하의 말씀과 사진을 남겨주시면 
+          소중히 간직하도록 하겠습니다. 
+        </p>
+        <p class="tip kr-mono">
+          * 식 1시간 전인 4시30분 부터 <br/>120분 동안 이용 가능합니다. <br/>
+          * 무제한 촬영 가능합니다. <br/>
+          * 인원수대로 출력 가능합니다. 
+        </p>
       </section>
-      <section class="board-list">
+      <section class="dining">
+        <img src="~/assets/images/restaurant.png" class="restaurant" alt="">
+        <p class="kr block-title">- 식순 -</p>
+        <div class="content">
+          <ul class="kr-mono">
+            <li><span>- 16:30 -</span><br/>하객맞이 및 포토부스 이용</li>
+            <li><span>- 17:30 -</span><br/>1부예식</li>
+            <li><span>- 18:00 -</span><br/>사진촬영</li>
+            <li><span>- 18:30 -</span><br/>2부예식</li>
+            <li><span>- 19:00 -</span><br/>마무리</li>
+          </ul>
+          <p class="kr-mono">
+            식이 끝난 후 식장을 꾸몄던 생화는 
+            하객분들이 가져가실 수 있도록 포장해드립니다. 
+            마지막까지 함께해주시면 감사하겠습니다. 
+          </p>
+        </div>
+      </section>
+      <img src="~/assets/images/wedding.gif" alt="">
+      <section class="invitation">
+        <div class="blur-backdrop">
+          <p class="kr block-title">- 참석 요부 전달하기 -</p>
+          <v-form ref="form" class="form">
+            <div class="radio-wrapper">
+              <v-radio-group inline v-model="boardData.sortation">
+                <v-btn size="x-large" class="clicked">
+                  <span style="margin-right: 0.25rem">🤵🏻</span>
+                  <v-radio label="신랑측" value="신랑측"></v-radio>
+                </v-btn>
+                <v-btn size="x-large">
+                  <span style="margin-right: 0.25rem">👰🏻‍♀️</span>
+                  <v-radio label="신부측" value="신부측"></v-radio>
+                </v-btn>
+              </v-radio-group>
+            </div>
+            <v-text-field
+              v-model="boardData.name"
+              :counter="10"
+              label="성함 / Name"
+            ></v-text-field>
+            <v-select
+            label="참석인원 / Attendance"
+            v-model="boardData.attendance"
+            :items="['1', '2', '3', '4', '5', '6', '7']"
+            variant="outlined"
+            ></v-select>
+            <v-text-field
+              v-model="boardData.companion"
+              :counter="10"
+              label="동행인 / Companion"
+            ></v-text-field>
+            <div class="attendance-wrapper">
+              <p class="kr-mono">- 참석엽부 -</p>
+              <v-radio-group inline v-model="boardData.attending_status">
+                <v-btn size="" class="clicked">
+                  1부까지<br/>17:30 ~ 18:00
+                  <v-radio label="" value="1부까지"></v-radio>
+                </v-btn>
+                <v-btn size="">
+                  2부까지<br/>18:30 ~ 19:00
+                  <v-radio label="" value="2부까지"></v-radio>
+                </v-btn>
+                <v-btn size="">
+                  미참
+                  <v-radio label="" value="미참"></v-radio>
+                </v-btn>
+              </v-radio-group>
+            </div>
+          </v-form>
+          <v-btn class="submit kr-mono" block @click="submit">등록하기 Submit</v-btn>
+        </div>
+      </section>
+      <section class="footer"></section>
+      <!-- <section class="board-list">
         <ul>
           <li v-for="(data, index) in test" :key="data.index">
             {{ data.name }} / {{ data.message }} / {{ data.created_time }}
           </li>
         </ul>
-      </section>
+      </section> -->
     </div>
   </div>
 </template>
@@ -434,71 +515,83 @@ const showContent = () => {
 
 const runtimeConfig = useRuntimeConfig()
 const imgUrl = ref(runtimeConfig.public.imgUrl)
-const galleryImg = ref([
-  { src: `${imgUrl.value}1.jpg` },
-  { src: `${imgUrl.value}2.jpg` },
-  { src: `${imgUrl.value}3.jpg` },
-  { src: `${imgUrl.value}4.jpg` },
-  { src: `${imgUrl.value}5.jpg` },
-  { src: `${imgUrl.value}6.jpg` },
-  { src: `${imgUrl.value}7.jpg` },
-  { src: `${imgUrl.value}8.jpg` },
-  { src: `${imgUrl.value}9.jpg` },
-  { src: `${imgUrl.value}10.jpg` },
-  { src: `${imgUrl.value}11.jpg` },
-  { src: `${imgUrl.value}12.jpg` },
-  { src: `${imgUrl.value}13.jpg` },
-  { src: `${imgUrl.value}14.jpg` },
-  { src: `${imgUrl.value}15.jpg` },
-  { src: `${imgUrl.value}16.jpg` },
-  { src: `${imgUrl.value}17.jpg` },
-  { src: `${imgUrl.value}18.jpg` },
-  { src: `${imgUrl.value}19.jpg` },
-  { src: `${imgUrl.value}20.jpg` },
-  { src: `${imgUrl.value}21.jpg` },
-  { src: `${imgUrl.value}22.jpg` },
-  { src: `${imgUrl.value}23.jpg` },
-  { src: `${imgUrl.value}24.jpg` },
-  { src: `${imgUrl.value}25.jpg` },
-  { src: `${imgUrl.value}26.jpg` },
-  { src: `${imgUrl.value}27.jpg` },
-  { src: `${imgUrl.value}28.jpg` },
-  { src: `${imgUrl.value}29.jpg` },
-  { src: `${imgUrl.value}30.jpg` },
-  { src: `${imgUrl.value}31.jpg` },
-])
+// const galleryImg = ref([
+//   { src: `${imgUrl.value}1.jpg` },
+//   { src: `${imgUrl.value}2.jpg` },
+//   { src: `${imgUrl.value}3.jpg` },
+//   { src: `${imgUrl.value}4.jpg` },
+//   { src: `${imgUrl.value}5.jpg` },
+//   { src: `${imgUrl.value}6.jpg` },
+//   { src: `${imgUrl.value}7.jpg` },
+//   { src: `${imgUrl.value}8.jpg` },
+//   { src: `${imgUrl.value}9.jpg` },
+//   { src: `${imgUrl.value}10.jpg` },
+//   { src: `${imgUrl.value}11.jpg` },
+//   { src: `${imgUrl.value}12.jpg` },
+//   { src: `${imgUrl.value}13.jpg` },
+//   { src: `${imgUrl.value}14.jpg` },
+//   { src: `${imgUrl.value}15.jpg` },
+//   { src: `${imgUrl.value}16.jpg` },
+//   { src: `${imgUrl.value}17.jpg` },
+//   { src: `${imgUrl.value}18.jpg` },
+//   { src: `${imgUrl.value}19.jpg` },
+//   { src: `${imgUrl.value}20.jpg` },
+//   { src: `${imgUrl.value}21.jpg` },
+//   { src: `${imgUrl.value}22.jpg` },
+//   { src: `${imgUrl.value}23.jpg` },
+//   { src: `${imgUrl.value}24.jpg` },
+//   { src: `${imgUrl.value}25.jpg` },
+//   { src: `${imgUrl.value}26.jpg` },
+//   { src: `${imgUrl.value}27.jpg` },
+//   { src: `${imgUrl.value}28.jpg` },
+//   { src: `${imgUrl.value}29.jpg` },
+//   { src: `${imgUrl.value}30.jpg` },
+//   { src: `${imgUrl.value}31.jpg` },
+// ])
 
 const imageDialogVisible = ref(false)
 const currentImageIndex = ref(0)
 let swiperInstance: SwiperType | null = null
 
-const showImage = (index: number) => {
-  currentImageIndex.value = index
-  imageDialogVisible.value = true
-}
+// const showImage = (index: number) => {
+//   currentImageIndex.value = index
+//   imageDialogVisible.value = true
+// }
 
 const onSwiperInitialized = (swiper: SwiperType) => {
   swiperInstance = swiper
 }
 
-// 當 dialog 打開時，確保 Swiper 滑動到正確的圖片
-watch(imageDialogVisible, (newValue) => {
-  if (newValue && swiperInstance) {
-    swiperInstance.slideTo(currentImageIndex.value, 0)
-  }
-})
+// // 當 dialog 打開時，確保 Swiper 滑動到正確的圖片
+// watch(imageDialogVisible, (newValue) => {
+//   if (newValue && swiperInstance) {
+//     swiperInstance.slideTo(currentImageIndex.value, 0)
+//   }
+// })
+
+// const accountInfo = ref([{
+//   name: '서지유',
+//   bankNum: ''
+// }])
 
 // Google api
+const form = ref()
+
 const { data: test, refresh } = (await useFetch(
-  "https://script.google.com/macros/s/AKfycbzH6LnDHOhyQtTaB01yHRhcWk0cQ_fUUMxuLkr10gA04gyvWTKXAwkHMuXrompecUigKQ/exec",
+  "https://script.google.com/macros/s/AKfycbx2CGzCrM3iJ5SOofl1ti3N3gn5ZTO7fr3TusXlI8OFGWEtYYAOGtM0kBEmZq9kQZxdlQ/exec",
   { method: "get" }
 )) as {
   [key: string]: any
 }
+console.log(test.value);
+
 
 const boardData = ref({
+  sortation: "",
   name: "",
-  message: "",
+  attendance: "",
+  companion: "",
+  attending_status: "",
   created_time: "",
 })
 
@@ -532,14 +625,19 @@ const convertTime = (date: any) => {
 }
 
 const submit = async () => {
-  if (boardData.value.name !== "" || boardData.value.message !== "") {
-    boardData.value.created_time = convertTime(new Date())
-    const result = await addUser(boardData.value)
-    refresh()
-    boardData.value.name = ""
-    boardData.value.message = ""
-    boardData.value.created_time = ""
-  }
+  // if (boardData.value.name !== "" || boardData.value.message !== "") {
+  // }
+  boardData.value.sortation = "신랑측"
+  boardData.value.name = "Laura"
+  boardData.value.attendance = "2"
+  boardData.value.companion = "SangJin"
+  boardData.value.attending_status = "2부까지"
+  boardData.value.created_time = convertTime(new Date())
+  const result = await addUser(boardData.value)
+  refresh()
+  // boardData.value.name = ""
+  // boardData.value.message = ""
+  // boardData.value.created_time = ""
 }
 
 
