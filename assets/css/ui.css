@@ -217,7 +217,7 @@ main {
     & p {
       color: var(--main-text);
       word-break: keep-all;
-      font-size: 1.25rem;
+      font-size: 1rem;
       line-height: 1.65;
       @media screen and (width <= 768px) {
         /* font-size: 1.25rem; */
@@ -237,17 +237,17 @@ main {
         justify-content: space-around;
         align-items: center;
         padding-bottom: 0.3rem;
-        font-size: 1.25rem;
+        font-size: 1rem;
         font-weight: bold;
         color: #727272;
         @media screen and (width <= 768px) {
-          font-size: 1.15rem;
+          font-size: 0.95rem;
         }
         & span {
           font-size: 0.85rem;
           font-weight: normal;
           @media screen and (width <= 768px) {
-            font-size: 1rem;
+            font-size: 0.835rem;
           }
         }
       }
@@ -491,7 +491,7 @@ main {
         margin-right: 0.75rem !important;
       }
       & p {
-        font-size: 1.25rem !important;
+        font-size: 1rem !important;
         color: rgb(92, 108, 120);
       }
       &::after{
@@ -500,7 +500,6 @@ main {
         width: 30%;
         height: 0.5px;
         background: rgb(92, 108, 120);
-        /* top: -10; */
         left: 0;
         transform: translateY(25px);
       }
@@ -522,7 +521,6 @@ main {
   background-color: rgba(202, 127, 127, 0.2);
   & p {
     font-size: 1.35rem !important;
-    /* font-weight: bold; */
   }
   & .block-title {
     color: rgb(202, 127, 127);
@@ -547,8 +545,7 @@ main {
     border: 1px solid rgb(202, 127, 127);
   }
   & .v-expansion-panel-title {
-    /* font-family: "Sunflower", sans-serif !important; */
-    font-size: 1.15rem !important;
+    font-size: 1rem !important;
     font-weight: bold !important;
     color: rgb(222, 146, 146) !important;
   }
@@ -557,12 +554,11 @@ main {
     background-color: #ffffff !important;
   }
   & .content {
-    /* padding-top: 1rem !important; */
     & .content-info {
       text-align: left;
       margin-bottom: 2rem !important;
       & p {
-        font-size: 1.15rem !important;
+        font-size: 0.85rem !important;
         color: #727272;
       }
     }
@@ -591,9 +587,8 @@ main {
     }
   }
   & .content {
-    font-size: 1.15rem !important;
+    font-size: 0.95rem !important;
     line-height: 1.65;
-    /* font-weight: bold; */
     color: rgb(182, 99, 99);
     word-break: keep-all;
   }
@@ -625,8 +620,7 @@ main {
     margin: 0 1rem !important;
     word-break: keep-all;
     line-height: 1.65;
-    font-size: 1.15rem !important;
-    /* font-weight: bold; */
+    font-size: 0.95rem !important;
     color: rgb(182, 99, 99);
   }
   & .tip {
@@ -634,7 +628,6 @@ main {
     margin: 2rem 1rem 1rem !important;
     line-height: 1.65;
     font-size: 0.85rem !important;
-    /* font-weight: bold; */
     color: #575050;
   }
 }
@@ -667,7 +660,7 @@ main {
       margin-bottom: 1.5rem !important;
       & li {
         line-height: 1.5;
-        font-size: 1.15rem;
+        font-size: 0.95rem;
         /* font-weight: bold; */
         color: rgb(182, 99, 99);
         margin-bottom: 1rem !important;
@@ -683,60 +676,61 @@ main {
       line-height: 1.35;
       margin: 1rem !important;
       word-break: keep-all;
+      font-size: 0.85rem !important;
     }
   }
 }
 
 .invitation {
-  margin: 1rem 1rem 4rem !important;
-  height: 90vh;
-  /* padding: 2rem 1.75rem !important; */
-  /* border-radius: 10px; */
-  /* background-color: rgba(127, 177, 202, 0.2); */
-  background-image: url(/assets/images/bg.jpg);
+  margin: 1rem 1rem !important;
+  padding: 0.5rem 0 3rem !important;
+  background-color: rgba(202, 127, 127, 0.2);
+  /* background-image: url(/assets/images/bg.jpg);
   background-position-x: 30%;
-  background-size: cover; /* 確保背景圖像覆蓋整個視圖 */
-  background-attachment: fixed; /* 背景圖像固定 */
-  background-repeat: no-repeat; /* 背景圖像不重複 */
-  & .blur-backdrop {
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;  */
+  /* & .blur-backdrop {
     width: 100%;
     height: 100%;
+    padding-bottom: 3rem !important;
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
-    background-color: rgba(255, 255, 255, 0.1);
-    & .block-title {
-      padding: 2rem 0 1rem !important;
-      font-weight: bold;
-      color: rgb(255, 255, 255);
-      position: relative;
-      &::after {
-        content: '';
-        position: absolute;
-        width: 90%;
-        height: 0.5px;
-        left: 18px;
-        bottom: -10px;
-        background-color: rgb(255, 255, 255);
-      }
+    background-color: rgba(255, 255, 255, 0.3);
+  } */
+  & .block-title {
+    padding: 2rem 0 1rem !important;
+    font-weight: bold;
+    color: rgb(202, 127, 127);
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      width: 90%;
+      height: 0.5px;
+      left: 18px;
+      bottom: -10px;
+      background-color: rgb(202, 127, 127);
     }
   }
   & .form {
-    & .v-selection-control__wrapper, .v-selection-control__input {
-      display: none !important;
-    }
     & .radio-wrapper {
+      & .v-selection-control__wrapper, .v-selection-control__input {
+        display: none !important;
+      }
       & .v-input__control {
         justify-content: center;
         align-items: center;
       }
       & button {
-        margin: 0 1rem !important;
+        /* margin: 0 0.5rem !important; */
         font-size: 1.5rem !important;
-        font-weight: bold !important;
+        /* font-weight: bold !important; */
         letter-spacing: 2px !important;
         background-color: transparent !important;
         border: 1px solid #fff !important;
-        color: #fff !important;
+        background-color: #fff !important;
+        color: #4c4c4c !important;
       }
       & .v-btn.v-btn--variant-elevated.clicked{
         background: #fff !important;
@@ -757,9 +751,16 @@ main {
       background-color: #fff !important;
     }
     & .attendance-wrapper {
+      & .v-input {
+        & .v-input__details {
+          display: none !important;
+        }
+      }
       & p {
-        color:#fff;
+        color:rgb(84, 84, 84);
         font-weight: bold;
+        margin: 1rem 0 0.75rem 3rem !important;
+        text-align: left;
       }
       & .v-selection-control-group--inline {
         flex-direction: column !important;
@@ -767,11 +768,11 @@ main {
       & .v-btn {
         margin: 0.75rem 0 !important;
         padding: 0.5rem !important;
-        font-weight: bold !important;
+        /* font-weight: bold !important; */
         letter-spacing: 2px !important;
-        background-color: transparent !important;
-        border: 1px solid #fff !important;
-        color: #fff !important;
+        background-color: #fff !important;
+        /* border: 1px solid rgb(202, 127, 127) !important; */
+        color: #4c4c4c  !important;
       }
       & .v-btn.v-btn--variant-elevated.clicked{
         background: #fff !important;
@@ -783,7 +784,7 @@ main {
   }
   & .submit {
     font-size: 1rem !important;
-    background-color: #be8d7f!important;
+    background-color: #e97878!important;
     color: #ffffff !important;
     padding: 1.5rem 1rem !important;
   }
@@ -793,7 +794,9 @@ main {
   }
 }
 .footer {
-  height: 300px;
+  margin-top: 3rem !important;
+  height: 200px;
+  background-color: #565656;
 }
 .message-board {
   min-height: 300px;

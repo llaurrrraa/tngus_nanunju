@@ -1,4 +1,15 @@
 <template>
+
+  <v-overlay
+    :model-value="overlay"
+    class="align-center justify-center"
+  >
+    <v-progress-circular
+      color="error"
+      size="64"
+      indeterminate
+    ></v-progress-circular>
+  </v-overlay>
   <div class="invite-wrap">
     <div class="invite-inner">
       <main>
@@ -408,66 +419,71 @@
       </section>
       <img src="~/assets/images/wedding.gif" alt="">
       <section class="invitation">
-        <div class="blur-backdrop">
-          <p class="kr block-title">- 참석 요부 전달하기 -</p>
-          <v-form ref="form" class="form">
-            <div class="radio-wrapper">
-              <v-radio-group inline v-model="boardData.sortation">
-                <v-btn size="x-large" class="clicked">
-                  <span style="margin-right: 0.25rem">🤵🏻</span>
-                  <v-radio label="신랑측" value="신랑측"></v-radio>
-                </v-btn>
-                <v-btn size="x-large">
-                  <span style="margin-right: 0.25rem">👰🏻‍♀️</span>
-                  <v-radio label="신부측" value="신부측"></v-radio>
-                </v-btn>
-              </v-radio-group>
-            </div>
-            <v-text-field
-              v-model="boardData.name"
-              :counter="10"
-              label="성함 / Name"
-            ></v-text-field>
-            <v-select
-            label="참석인원 / Attendance"
-            v-model="boardData.attendance"
-            :items="['1', '2', '3', '4', '5', '6', '7']"
-            variant="outlined"
-            ></v-select>
-            <v-text-field
-              v-model="boardData.companion"
-              :counter="10"
-              label="동행인 / Companion"
-            ></v-text-field>
-            <div class="attendance-wrapper">
-              <p class="kr-mono">- 참석엽부 -</p>
-              <v-radio-group inline v-model="boardData.attending_status">
-                <v-btn size="" class="clicked">
-                  1부까지<br/>17:30 ~ 18:00
-                  <v-radio label="" value="1부까지"></v-radio>
-                </v-btn>
-                <v-btn size="">
-                  2부까지<br/>18:30 ~ 19:00
-                  <v-radio label="" value="2부까지"></v-radio>
-                </v-btn>
-                <v-btn size="">
-                  미참
-                  <v-radio label="" value="미참"></v-radio>
-                </v-btn>
-              </v-radio-group>
-            </div>
-          </v-form>
-          <v-btn class="submit kr-mono" block @click="submit">등록하기 Submit</v-btn>
-        </div>
+        <p class="kr block-title">- 참석 요부 전달하기 -</p>
+        <v-form ref="form" class="form">
+          <div class="radio-wrapper">
+            <v-radio-group inline v-model="boardData.sortation">
+              <v-btn size="large" style="margin-right: 0.75rem" :class="{ clicked: isSortation_m }" @click="setSortation('man')">
+                <span style="margin-right: 0.25rem">🤵🏻</span>
+                <v-radio label="신랑측" value="신랑측"></v-radio>
+              </v-btn>
+              <v-btn size="large" style="margin-left: 0.75rem" :class="{ clicked: isSortation_w }" @click="setSortation('woman')">
+                <span style="margin-right: 0.25rem">👰🏻‍♀️</span>
+                <v-radio label="신부측" value="신부측"></v-radio>
+              </v-btn>
+            </v-radio-group>
+          </div>
+          <v-text-field
+            v-model="boardData.name"
+            :counter="10"
+            label="성함 / Name"
+            :hide-details="true"
+            style="margin-bottom: 1rem"
+          ></v-text-field>
+          <v-select
+          label="참석인원 / Attendance"
+          v-model="boardData.attendance"
+          density="compact"
+          :items="['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']"
+          ></v-select>
+          <v-text-field
+            v-model="boardData.companion"
+            :counter="10"
+            label="동행인 / Companion"
+            :hide-details="true"
+            style="margin-bottom: 2.5rem"
+          ></v-text-field>
+          <div class="attendance-wrapper">
+            <p class="kr-mono">- 참석엽부 -</p>
+            <v-radio-group inline v-model="boardData.attending_status">
+              <v-radio label="1부까지" value="1부까지" color="error">
+                <template v-slot:label>
+                  <div>1부까지 <strong class="text-error">17:30 ~ 18:00</strong></div>
+                </template>
+              </v-radio>
+              <!-- <v-btn size="" :class="{ clicked: isStatus1 }" @click="setStatus(1)">
+                1부까지<br/>17:30 ~ 18:00
+              </v-btn> -->
+              <v-radio label="2부까지" value="2부까지" color="error">
+                <template v-slot:label>
+                  <div>2부까지 <strong class="text-error">18:30 ~ 19:00</strong></div>
+                </template>
+              </v-radio>
+              <!-- <v-btn size="" :class="{ clicked: isStatus2 }" @click="setStatus(2)">
+                2부까지<br/>18:30 ~ 19:00
+              </v-btn> -->
+              <v-radio label="미참" value="미참" color="error"></v-radio>
+              <!-- <v-btn size="" :class="{ clicked: isStatus3 }" @click="setStatus(3)">
+                미참
+              </v-btn> -->
+            </v-radio-group>
+          </div>
+        </v-form>
+        <v-btn class="submit kr-mono" block @click="submit">등록하기 Submit</v-btn>
+        <!-- <div class="blur-backdrop">
+        </div> -->
       </section>
       <section class="footer"></section>
-      <!-- <section class="board-list">
-        <ul>
-          <li v-for="(data, index) in test" :key="data.index">
-            {{ data.name }} / {{ data.message }} / {{ data.created_time }}
-          </li>
-        </ul>
-      </section> -->
     </div>
   </div>
 </template>
@@ -583,20 +599,49 @@ const { data: test, refresh } = (await useFetch(
 )) as {
   [key: string]: any
 }
-console.log(test.value);
 
+const isSortation_m = ref(false)
+const isSortation_w = ref(false)
+const setSortation = (status: string) => {
+  if (status === 'man') {
+    isSortation_m.value = true
+    isSortation_w.value = false
+  } else {
+    isSortation_m.value = false
+    isSortation_w.value = true
+  }
+}
+
+const isStatus1 = ref(false)
+const isStatus2 = ref(false)
+const isStatus3 = ref(true)
+const setStatus = (status: number) => {
+  if (status === 1) {
+    isStatus1.value = true
+    isStatus2.value = false
+    isStatus3.value = false
+  } else if (status === 2) {
+    isStatus1.value = false
+    isStatus2.value = true
+    isStatus3.value = false
+  } else {
+    isStatus1.value = false
+    isStatus2.value = false
+    isStatus3.value = true
+  }
+}
 
 const boardData = ref({
   sortation: "",
   name: "",
   attendance: "",
   companion: "",
-  attending_status: "",
+  attending_status: "미참",
   created_time: "",
 })
 
 const addUser = async (data: any) => {
-  await useFetch(
+  return await useFetch(
     "https://script.google.com/macros/s/AKfycbx2CGzCrM3iJ5SOofl1ti3N3gn5ZTO7fr3TusXlI8OFGWEtYYAOGtM0kBEmZq9kQZxdlQ/exec",
     {
       method: "post",
@@ -624,20 +669,32 @@ const convertTime = (date: any) => {
   return string
 }
 
+const overlay = ref(false)
 const submit = async () => {
-  // if (boardData.value.name !== "" || boardData.value.message !== "") {
-  // }
-  boardData.value.sortation = "신랑측"
-  boardData.value.name = "Laura"
-  boardData.value.attendance = "2"
-  boardData.value.companion = "SangJin"
-  boardData.value.attending_status = "2부까지"
+  overlay.value = true
   boardData.value.created_time = convertTime(new Date())
-  const result = await addUser(boardData.value)
+  try {
+    const { data: result } = await addUser(boardData.value) as { [key: string]: any }
+    setTimeout(() => {
+      overlay.value = false
+      Swal.fire({
+        text: "답변이 등록되었습니다.",
+        icon: "success",
+        confirmButtonText: "확인"
+      });
+    }, 500)
+  } catch (error) {
+    console.error(error)
+  }
+  boardData.value.sortation = ""
+  boardData.value.name = ""
+  boardData.value.attendance = ""
+  boardData.value.companion = ""
+  boardData.value.attending_status = ""
+  boardData.value.created_time = ""
+  isSortation_m.value = false;
+  isSortation_w.value = false;
   refresh()
-  // boardData.value.name = ""
-  // boardData.value.message = ""
-  // boardData.value.created_time = ""
 }
 
 
@@ -662,22 +719,6 @@ const pauseBtn = ref()
 const onLoadMarker = (marker:naver.maps.Marker) => {
 }
 
-// const isShow = ref(false)
-// const showModal = () => {
-//   isShow.value = false;
-// }
-// const { open, close } = useModal({
-//     component: ModalConfirm,
-//     attrs: {
-//       title: 'Hello World!',
-//       onConfirm() {
-//         close()
-//       },
-//     },
-//     slots: {
-//       default: '<p>UseModal: The content of the modal</p>',
-//     },
-//   })
 
 onMounted(() => {
   window.addEventListener("resize", checkScreenSize)
@@ -686,18 +727,5 @@ onMounted(() => {
     playBtn.value = document.querySelector("play-btn")
     pauseBtn.value = document.querySelector("pause-btn")
   }
-  // const script = document.createElement("script");
-  // script.src= "https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=f4wfl3jf7e";
-  // script.async = true;
-  // script.defer = true;
-  // document.head.appendChild(script);
-
-  // script.onload = () => {
-  //   // 네이버 지도 생성
-  //   new window.naver.maps.Map("map", {
-  //     center: new window.naver.maps.LatLng(37.551135499999454, 126.99861002157358),
-  //     zoom: 10
-  //   });
-  // };
 })
 </script>
