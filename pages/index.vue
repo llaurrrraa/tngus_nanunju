@@ -123,10 +123,73 @@
       <section class="gallery">
         <p class="kr block-title">- Gallery -</p>
         <div class="gallery-container">
-          <div v-for="(img, index) in galleryImg" :key="index">
+          <!-- <div v-for="(img, index) in galleryImg" :key="index">
+            <img :src="`${img.src}`" alt="" @click="showImage(index)">
             <NuxtImg :src="img.src" :alt="`img-${index+1}`" @click="showImage(index)" />
-          </div>
-          <v-dialog v-model="imageDialogVisible" max-width="500" class="image-dialog">
+          </div> -->
+          <nuxt-error-boundary @error="() => {}">
+            <Swiper
+              id="collection-swiper"
+              :modules="[
+                SwiperPagination,
+                SwiperNavigation,
+                SwiperKeyboard,
+                SwiperA11y,
+                SwiperFreeMode
+              ]"
+              :navigation="true"
+              :pagination="{
+                type: 'fraction'
+              }"
+              :keyboard="{
+                enabled: true
+              }"
+              :a11y="{
+                enabled: true,
+                prevSlideMessage: '上一頁',
+                nextSlideMessage: '下一頁'
+              }"
+              :freemode="true"
+              :observer="true"
+              :grab-cursor="true"
+              :space-between="20"
+              :initial-slide="currentImageIndex"
+              @swiper="onSwiperInitialized"
+            >
+              <SwiperSlide><img src="~/assets/images/gallery/1.jpg" alt="img-1" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/2.jpg" alt="img-2" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/3.jpg" alt="img-3" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/4.jpg" alt="img-4" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/5.jpg" alt="img-5" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/6.jpg" alt="img-6" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/7.jpg" alt="img-7" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/8.jpg" alt="img-8" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/9.jpg" alt="img-9" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/10.jpg" alt="img-10" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/11.jpg" alt="img-11" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/12.jpg" alt="img-12" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/13.jpg" alt="img-13" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/14.jpg" alt="img-14" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/15.jpg" alt="img-15" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/16.jpg" alt="img-16" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/17.jpg" alt="img-17" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/18.jpg" alt="img-18" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/19.jpg" alt="img-19" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/20.jpg" alt="img-20" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/21.jpg" alt="img-21" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/22.jpg" alt="img-22" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/23.jpg" alt="img-23" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/24.jpg" alt="img-24" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/25.jpg" alt="img-25" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/26.jpg" alt="img-26" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/27.jpg" alt="img-27" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/28.jpg" alt="img-28" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/29.jpg" alt="img-29" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/30.jpg" alt="img-30" /></SwiperSlide>
+              <SwiperSlide><img src="~/assets/images/gallery/31.jpg" alt="img-31" /></SwiperSlide>
+            </Swiper>
+          </nuxt-error-boundary>
+          <!-- <v-dialog v-model="imageDialogVisible" max-width="500" class="image-dialog">
             <v-card>
               <v-card-title class="d-flex justify-end align-center">
                 <v-btn
@@ -138,7 +201,6 @@
               </v-card-title>
               <v-card-item>
                 <nuxt-error-boundary @error="() => {}">
-                  <!-- Swiper -->
                   <Swiper
                     id="collection-swiper"
                     :modules="[
@@ -168,13 +230,13 @@
                     @swiper="onSwiperInitialized"
                   >
                     <SwiperSlide v-for="(img, index) in galleryImg" :key="index">
-                      <NuxtImg class="modal-img" :src="img.src" :alt="`img-${index+1}`" />
+                      <img class="modal-img" :src="`${img.src}`" :alt="`img-${index+1}`" />
                     </SwiperSlide>
                   </Swiper>
                 </nuxt-error-boundary>
               </v-card-item>
             </v-card>
-          </v-dialog>
+          </v-dialog> -->
         </div>
         <img src="~/assets/images/flower-3.png" class="flower_3" alt="flower_deco_2" />
       </section>
@@ -305,7 +367,8 @@
         </div>
       </section>
       <section class="notice">
-
+        <img src="~/assets/images/marriage.png" class="marriage" alt="marriage">
+        <p class="en block-title">- Notice -</p>
       </section>
       <section class="message-board">
         <p class="en block-title">- Guest Book -</p>
@@ -372,37 +435,37 @@ const showContent = () => {
 const runtimeConfig = useRuntimeConfig()
 const imgUrl = ref(runtimeConfig.public.imgUrl)
 const galleryImg = ref([
-  { src: '/images/1.jpg' },
-  { src: '/images/2.jpg' },
-  { src: '/images/3.jpg' },
-  { src: '/images/4.jpg' },
-  { src: '/images/5.jpg' },
-  { src: '/images/6.jpg' },
-  { src: '/images/7.jpg' },
-  { src: '/images/8.jpg' },
-  { src: '/images/9.jpg' },
-  { src: '/images/10.jpg' },
-  { src: '/images/11.jpg' },
-  { src: '/images/12.jpg' },
-  { src: '/images/13.jpg' },
-  { src: '/images/14.jpg' },
-  { src: '/images/15.jpg' },
-  { src: '/images/16.jpg' },
-  { src: '/images/17.jpg' },
-  { src: '/images/18.jpg' },
-  { src: '/images/19.jpg' },
-  { src: '/images/20.jpg' },
-  { src: '/images/21.jpg' },
-  { src: '/images/22.jpg' },
-  { src: '/images/23.jpg' },
-  { src: '/images/24.jpg' },
-  { src: '/images/25.jpg' },
-  { src: '/images/26.jpg' },
-  { src: '/images/27.jpg' },
-  { src: '/images/28.jpg' },
-  { src: '/images/29.jpg' },
-  { src: '/images/30.jpg' },
-  { src: '/images/31.jpg' },
+  { src: `${imgUrl.value}1.jpg` },
+  { src: `${imgUrl.value}2.jpg` },
+  { src: `${imgUrl.value}3.jpg` },
+  { src: `${imgUrl.value}4.jpg` },
+  { src: `${imgUrl.value}5.jpg` },
+  { src: `${imgUrl.value}6.jpg` },
+  { src: `${imgUrl.value}7.jpg` },
+  { src: `${imgUrl.value}8.jpg` },
+  { src: `${imgUrl.value}9.jpg` },
+  { src: `${imgUrl.value}10.jpg` },
+  { src: `${imgUrl.value}11.jpg` },
+  { src: `${imgUrl.value}12.jpg` },
+  { src: `${imgUrl.value}13.jpg` },
+  { src: `${imgUrl.value}14.jpg` },
+  { src: `${imgUrl.value}15.jpg` },
+  { src: `${imgUrl.value}16.jpg` },
+  { src: `${imgUrl.value}17.jpg` },
+  { src: `${imgUrl.value}18.jpg` },
+  { src: `${imgUrl.value}19.jpg` },
+  { src: `${imgUrl.value}20.jpg` },
+  { src: `${imgUrl.value}21.jpg` },
+  { src: `${imgUrl.value}22.jpg` },
+  { src: `${imgUrl.value}23.jpg` },
+  { src: `${imgUrl.value}24.jpg` },
+  { src: `${imgUrl.value}25.jpg` },
+  { src: `${imgUrl.value}26.jpg` },
+  { src: `${imgUrl.value}27.jpg` },
+  { src: `${imgUrl.value}28.jpg` },
+  { src: `${imgUrl.value}29.jpg` },
+  { src: `${imgUrl.value}30.jpg` },
+  { src: `${imgUrl.value}31.jpg` },
 ])
 
 const imageDialogVisible = ref(false)

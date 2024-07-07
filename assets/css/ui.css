@@ -276,11 +276,11 @@ main {
   & .contact-dialog {
     font-size: 1.15rem !important;
     & .contact-container-1,.contact-container-2 {
-      margin: 1.5rem auto 2rem;
+      margin: 1.5rem auto 2rem !important;
       & div {
         display: flex;
         justify-content: space-around;
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.75rem !important;
       }
       & p {
         font-size: 1rem;
@@ -392,13 +392,22 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    & img {
+    & .swiper-wrapper {
+      padding: 1rem;
+      align-items: center;
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+    /* & img {
       width: 100px;
       height: 100px;
       border-radius: 0.5rem;
       object-fit: cover;
       margin: 0.5rem !important;
-    }
+    } */
   }
 }
 .image-dialog {
@@ -420,7 +429,8 @@ main {
   color: rgba(255,255,255,0.4) !important;
 }
 .swiper-pagination-fraction {
-  color: #fff !important;
+  color: rgb(232, 217, 8) !important;
+  font-family: "Playfair Display", serif !important;
 }
 
 .map {
@@ -495,6 +505,7 @@ main {
       }
     }
     & .content {
+      font-size: 0.835rem;
       margin-top: 1.75rem !important;
       text-align: left;
       color: rgb(92, 108, 120);
@@ -506,19 +517,20 @@ main {
 .account {
   margin: 4rem 1.75rem !important;
   & p {
-    font-size: 1.2rem !important;
+    font-size: 1.15rem !important;
   }
   & .couple {
     width: 58px;
     margin-bottom: 1.5rem !important;
   }
   & .v-expansion-panel {
-    background-color: rgba(255, 114, 114, 0.4) !important;
+    background-color: rgba(195, 209, 219, 0.5) !important;
   }
   & .v-expansion-panel-title {
     font-family: "Sunflower", sans-serif !important;
+    font-size: 1.15rem !important;
     font-weight: bold !important;
-    color: rgb(221, 94, 94) !important;
+    color: rgb(87, 106, 120) !important;
   }
   & .v-expansion-panel-text__wrapper {
     padding: 1.75rem 1.75rem 1rem !important;

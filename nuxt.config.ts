@@ -36,7 +36,7 @@ export default defineNuxtConfig({
       websiteName: process.env.NUXT_PUBLIC_WEBSITE_NAME || '서지유 🤍 조수현',
       websiteDescription: process.env.NUXT_PUBLIC_WEBSITE_DESCRIPTION || '서지유 🤍 조수현',
       apiUrl: process.env.NUXT_API_URL,
-      imgUrl: process.env.NUXT_PICTURE_URL || 'http://localhost:3000',
+      imgUrl: process.env.NUXT_PICTURE_URL || 'http://localhost:3000/tngus_nanunju/images/',
     },
     dbURL: process.env.DATABASE_URL,
   },
@@ -44,15 +44,10 @@ export default defineNuxtConfig({
     // '/': { prerender: true, isr: true },
     '/api/**': { cors: true },
   },
-  // image: {
-  //   dir: 'public/images'
-  // }
-  nitro: {
-    prerender: {
-      routes: [
-        '/public/images/1.jpg',
-        // etc.
-      ]
-    }
+  image: {
+    dir: 'public',
+    baseURL: process.env.NODE_ENV === 'production' 
+      ? 'https://llaurrrraa.github.io/tngus_nanunju/' 
+      : '/'
   }
 })
