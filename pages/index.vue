@@ -71,7 +71,8 @@
         <p class="kr block-title">- Save The Date -</p>
         <div class="calendar-date">
           <div class="header kr">8월 <span class="kr">August</span></div>
-          <hr />
+          <img src="~/assets/images/calendar.png" alt="">
+          <!-- <hr />
           <table border="0">
             <tbody>
               <tr>
@@ -129,7 +130,7 @@
                 <td class="kr weddingDay"></td>
               </tr>
             </tbody>
-          </table>
+          </table> -->
         </div>
         <img src="~/assets/images/flower-3.png" class="flower_3" alt="flower_deco_2" />
       </section>
@@ -250,7 +251,7 @@
             </v-card>
           </v-dialog> -->
         </div>
-        <img src="~/assets/images/flower-3.png" class="flower_3" alt="flower_deco_2" />
+        <img src="~/assets/images/flower-3.png" class="flower_4" alt="flower_deco_2" />
       </section>
       <section class="map">
         <p class="kr block-title" style="margin-bottom: 1rem">- Location -</p>
@@ -324,22 +325,31 @@
               <v-expansion-panel-text class="content">
                 <div class="content-info">
                   <div style="display: flex;align-items: center; justify-content: space-between; margin-bottom: 0.5rem">
-                    <p class="kr-mono">신한 <span id="">110-411-483439</span></p>
-                    <!-- <v-btn size="small" variant="tonal">복사</v-btn> -->
+                    <p class="kr-mono">신한 <span id="bank-1">110-411-483439</span></p>
+                    <v-btn size="small" variant="tonal" @click="setCopy(1)">
+                      <template v-if="!isCopied[0]">복사</template>
+                      <template v-else><i class="fa-solid fa-check"></i></template>
+                    </v-btn>
                   </div>
                   <p class="kr-mono" style="font-weight: bold;">서지유</p>
                 </div>
                 <div class="content-info">
                   <div style="display: flex;align-items: center; justify-content: space-between; margin-bottom: 0.5rem">
-                    <p class="kr-mono">신한 110-531-224600</p>
-                    <!-- <v-btn size="small" variant="tonal">복사</v-btn> -->
+                    <p class="kr-mono">신한 <span id="bank-2">110-531-224600</span></p>
+                    <v-btn size="small" variant="tonal" @click="setCopy(2)">
+                      <template v-if="!isCopied[1]">복사</template>
+                      <template v-else><i class="fa-solid fa-check"></i></template>
+                    </v-btn>
                   </div>
                   <p class="kr-mono" style="font-weight: bold;">서상길</p>
                 </div>
                 <div class="content-info">
                   <div style="display: flex;align-items: center; justify-content: space-between; margin-bottom: 0.5rem">
-                    <p class="kr-mono">신한 110-573-254041</p>
-                    <!-- <v-btn size="small" variant="tonal">복사</v-btn> -->
+                    <p class="kr-mono">신한 <span id="bank-3">110-573-254041</span></p>
+                    <v-btn size="small" variant="tonal" @click="setCopy(3)">
+                      <template v-if="!isCopied[2]">복사</template>
+                      <template v-else><i class="fa-solid fa-check"></i></template>
+                    </v-btn>
                   </div>
                   <p class="kr-mono" style="font-weight: bold;">이연숙</p>
                 </div>
@@ -354,22 +364,31 @@
               <v-expansion-panel-text class="content">
                 <div class="content-info">
                   <div style="display: flex;align-items: center; justify-content: space-between; margin-bottom: 0.5rem">
-                    <p class="kr-mono">우리 1002-152-991519</p>
-                    <!-- <v-btn size="small" variant="tonal">복사</v-btn> -->
+                    <p class="kr-mono">우리 <span id="bank-4">1002-152-991519</span></p>
+                    <v-btn size="small" variant="tonal" @click="setCopy(4)">
+                      <template v-if="!isCopied[3]">복사</template>
+                      <template v-else><i class="fa-solid fa-check"></i></template>
+                    </v-btn>
                   </div>
                   <p class="kr-mono" style="font-weight: bold;">조수현</p>
                 </div>
                 <div class="content-info">
                   <div style="display: flex;align-items: center; justify-content: space-between; margin-bottom: 0.5rem">
-                    <p class="kr-mono">우리 1002-442-118277</p>
-                    <!-- <v-btn size="small" variant="tonal">복사</v-btn> -->
+                    <p class="kr-mono">우리 <span id="bank-5">1002-442-118277</span></p>
+                    <v-btn size="small" variant="tonal" @click="setCopy(5)">
+                      <template v-if="!isCopied[4]">복사</template>
+                      <template v-else><i class="fa-solid fa-check"></i></template>
+                    </v-btn>
                   </div>
                   <p class="kr-mono" style="font-weight: bold;">조재성</p>
                 </div>
                 <div class="content-info">
                   <div style="display: flex;align-items: center; justify-content: space-between; margin-bottom: 0.5rem">
-                    <p class="kr-mono">우리 597-124718-02-003</p>
-                    <!-- <v-btn size="small" variant="tonal">복사</v-btn> -->
+                    <p class="kr-mono">우리 <span id="bank-6">597-124718-02-003</span></p>
+                    <v-btn size="small" variant="tonal" @click="setCopy(6)">
+                      <template v-if="!isCopied[5]">복사</template>
+                      <template v-else><i class="fa-solid fa-check"></i></template>
+                    </v-btn>
                   </div>
                   <p class="kr-mono" style="font-weight: bold;">홍연숙</p>
                 </div>
@@ -426,12 +445,10 @@
             <v-radio-group inline v-model="boardData.sortation">
               <v-btn size="large" style="margin-right: 0.75rem" :class="{ clicked: isSortation_m }" @click="setSortation('man')">
                 <span style="margin-right: 0.25rem">🤵🏻</span>
-                <!-- <img src="~/assets/images/groom.png" alt="groom" style="width:25px;margin-right: 0.25rem"> -->
                 <v-radio label="신랑측" value="신랑측"></v-radio>
               </v-btn>
               <v-btn size="large" style="margin-left: 0.75rem" :class="{ clicked: isSortation_w }" @click="setSortation('woman')">
                 <span style="margin-right: 0.25rem">👰🏻</span>
-                <!-- <img src="~/assets/images/bride.png" alt="groom" style="width:25px;margin-right: 0.25rem"> -->
                 <v-radio label="신부측" value="신부측"></v-radio>
               </v-btn>
             </v-radio-group>
@@ -461,30 +478,19 @@
             <v-radio-group inline v-model="boardData.attending_status">
               <v-radio label="1부까지" value="1부까지" color="error">
                 <template v-slot:label>
-                  <div>1부까지 <strong class="text-error">17:30 ~ 18:00</strong></div>
+                  <div class="kr-mono">1부까지 <strong class="text-error">17:30 ~ 18:00</strong></div>
                 </template>
               </v-radio>
-              <!-- <v-btn size="" :class="{ clicked: isStatus1 }" @click="setStatus(1)">
-                1부까지<br/>17:30 ~ 18:00
-              </v-btn> -->
               <v-radio label="2부까지" value="2부까지" color="error">
                 <template v-slot:label>
-                  <div>2부까지 <strong class="text-error">18:30 ~ 19:00</strong></div>
+                  <div class="kr-mono">2부까지 <strong class="text-error">18:30 ~ 19:00</strong></div>
                 </template>
               </v-radio>
-              <!-- <v-btn size="" :class="{ clicked: isStatus2 }" @click="setStatus(2)">
-                2부까지<br/>18:30 ~ 19:00
-              </v-btn> -->
               <v-radio label="미참" value="미참" color="error"></v-radio>
-              <!-- <v-btn size="" :class="{ clicked: isStatus3 }" @click="setStatus(3)">
-                미참
-              </v-btn> -->
             </v-radio-group>
           </div>
         </v-form>
         <v-btn class="submit kr-mono" block @click="submit">등록하기 Submit</v-btn>
-        <!-- <div class="blur-backdrop">
-        </div> -->
       </section>
       <section class="notice2">
         <img src="~/assets/images/bouquet.png" alt="">
@@ -727,19 +733,37 @@ const pauseBtn = ref()
 const onLoadMarker = (marker:naver.maps.Marker) => {
 }
 
-// const playBgm = () => {
-//   audio.value!.muted = true;
-//   audio.value?.play();
-//   const ctx = new AudioContext();
-//   const canAutoPlay = ctx.state === 'running';
-//   ctx.close();
-//   if (canAutoPlay) {
-//     audio.value!.muted = false;
-//     isPause.value = true;
-//   } else {
-//     console.log(false);
-//   }
-// }
+const isCopied = ref([false, false, false, false, false, false,])
+const setCopy = (target: number) => {
+  let txt: any;
+  switch (target) {
+    case 1:
+      txt = document.getElementById('bank-1');
+      break
+    case 2:
+      txt = document.getElementById('bank-2');
+    break
+    case 3:
+      txt = document.getElementById('bank-3');
+      break
+    case 4:
+      txt = document.getElementById('bank-4');
+      break
+    case 5:
+      txt = document.getElementById('bank-5');
+      break
+    case 6:
+      txt = document.getElementById('bank-6');
+      break
+  }
+  isCopied.value[target-1] = true;
+  let textArea = document.createElement('textarea');
+  textArea.value = txt.textContent;
+  navigator.clipboard.writeText(textArea.value);
+  setTimeout(() => {
+    isCopied.value[target-1] = false;
+  }, 800)
+}
 
 onMounted(() => {
   window.addEventListener("resize", checkScreenSize)
@@ -749,11 +773,9 @@ onMounted(() => {
     pauseBtn.value = document.querySelector("pause-btn")
     document.addEventListener('touchstart', function() {
       audio.value?.play();
-      
       isPause.value = true;
       isPlay.value = false;
     })
-    console.log(audio.value)
   }
 })
 </script>

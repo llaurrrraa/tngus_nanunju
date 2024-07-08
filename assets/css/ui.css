@@ -317,11 +317,17 @@ main {
 }
 
 .calendar {
-  margin: 4rem 2rem!important;
+  /* margin: 4rem 2rem!important; */
   & p {
+    margin: 4rem 2rem 1.5rem!important;
     font-style: italic;
   }
   & .calendar-date {
+    width: 100%;
+    & img {
+      width: 100%;
+      height: 100%;
+    }
     & .header {
       font-size: 1.15rem !important;
       margin-bottom: 1rem !important;
@@ -378,7 +384,7 @@ main {
 
 .flower_3 {
   width: 50px;
-  margin-top: 2.75rem !important;
+  margin: 2.75rem !important;
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
 }
@@ -393,7 +399,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    /* & .swiper-wrapper {
+    & .swiper-wrapper {
       padding: 1rem;
       align-items: center;
       & img {
@@ -401,14 +407,14 @@ main {
         height: 100%;
         object-fit: contain;
       }
-    } */
-    & img {
+    }
+    /* & img {
       width: 100px;
       height: 100px;
       border-radius: 0.5rem;
       object-fit: cover;
       margin: 0.25rem !important;
-    }
+    } */
   }
 }
 .image-dialog {
@@ -433,6 +439,12 @@ main {
   color: rgb(232, 217, 8) !important;
   font-family: "Playfair Display", serif !important;
 }
+
+.flower_4 {
+  width: 50px;
+  margin: 2.75rem auto 2rem!important;
+}
+
 
 .map {
   margin-bottom: 2rem !important;
@@ -816,6 +828,7 @@ main {
   }
   & p {
     color: rgb(131, 131, 131); 
+    font-size: 0.835rem;
   }
 }
 
