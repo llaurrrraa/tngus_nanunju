@@ -15,10 +15,12 @@
       <main>
         <img v-if="isPlay" src="/assets/images/icons-play.png" class="icon-play" id="btn-play" @click="handleAudio('play')"></img>
         <img v-if="isPause" src="/assets/images/icons-pause.png" class="icon-pause" id="btn-pause" @click="handleAudio('pause')"></img>
-        <audio ref="audio" hidden="true">
-          <source src="/public/bg-sound.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
+        <video autoplay loop muted playsinline hidden="true">
+          <audio ref="audio" hidden="true">
+            <source src="/public/bg-sound.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </video>
       </main>
       <section class="info">
         <div class="first">
@@ -135,8 +137,7 @@
         <p class="kr block-title">- Gallery -</p>
         <div class="gallery-container">
           <!-- <div v-for="(img, index) in galleryImg" :key="index">
-            <img :src="`${img.src}`" alt="" @click="showImage(index)">
-            <NuxtImg :src="img.src" :alt="`img-${index+1}`" @click="showImage(index)" />
+            <img :src="`${img.src}`" :alt="`img-${index+1}`" @click="showImage(index)">
           </div> -->
           <nuxt-error-boundary @error="() => {}">
             <Swiper
@@ -425,10 +426,12 @@
             <v-radio-group inline v-model="boardData.sortation">
               <v-btn size="large" style="margin-right: 0.75rem" :class="{ clicked: isSortation_m }" @click="setSortation('man')">
                 <span style="margin-right: 0.25rem">🤵🏻</span>
+                <!-- <img src="~/assets/images/groom.png" alt="groom" style="width:25px;margin-right: 0.25rem"> -->
                 <v-radio label="신랑측" value="신랑측"></v-radio>
               </v-btn>
               <v-btn size="large" style="margin-left: 0.75rem" :class="{ clicked: isSortation_w }" @click="setSortation('woman')">
-                <span style="margin-right: 0.25rem">👰🏻‍♀️</span>
+                <span style="margin-right: 0.25rem">👰🏻</span>
+                <!-- <img src="~/assets/images/bride.png" alt="groom" style="width:25px;margin-right: 0.25rem"> -->
                 <v-radio label="신부측" value="신부측"></v-radio>
               </v-btn>
             </v-radio-group>
@@ -483,6 +486,11 @@
         <!-- <div class="blur-backdrop">
         </div> -->
       </section>
+      <section class="notice2">
+        <img src="~/assets/images/bouquet.png" alt="">
+        <p class="kr-mono">화환은 정중히 사양합니다.</p>
+        <p class="kr-mono">축하해주시는 마음만 감사히 받겠습니다.</p>
+      </section>
       <section class="footer"></section>
     </div>
   </div>
@@ -532,58 +540,58 @@ const showContent = () => {
 const runtimeConfig = useRuntimeConfig()
 const imgUrl = ref(runtimeConfig.public.imgUrl)
 // const galleryImg = ref([
-//   { src: `${imgUrl.value}1.jpg` },
-//   { src: `${imgUrl.value}2.jpg` },
-//   { src: `${imgUrl.value}3.jpg` },
-//   { src: `${imgUrl.value}4.jpg` },
-//   { src: `${imgUrl.value}5.jpg` },
-//   { src: `${imgUrl.value}6.jpg` },
-//   { src: `${imgUrl.value}7.jpg` },
-//   { src: `${imgUrl.value}8.jpg` },
-//   { src: `${imgUrl.value}9.jpg` },
-//   { src: `${imgUrl.value}10.jpg` },
-//   { src: `${imgUrl.value}11.jpg` },
-//   { src: `${imgUrl.value}12.jpg` },
-//   { src: `${imgUrl.value}13.jpg` },
-//   { src: `${imgUrl.value}14.jpg` },
-//   { src: `${imgUrl.value}15.jpg` },
-//   { src: `${imgUrl.value}16.jpg` },
-//   { src: `${imgUrl.value}17.jpg` },
-//   { src: `${imgUrl.value}18.jpg` },
-//   { src: `${imgUrl.value}19.jpg` },
-//   { src: `${imgUrl.value}20.jpg` },
-//   { src: `${imgUrl.value}21.jpg` },
-//   { src: `${imgUrl.value}22.jpg` },
-//   { src: `${imgUrl.value}23.jpg` },
-//   { src: `${imgUrl.value}24.jpg` },
-//   { src: `${imgUrl.value}25.jpg` },
-//   { src: `${imgUrl.value}26.jpg` },
-//   { src: `${imgUrl.value}27.jpg` },
-//   { src: `${imgUrl.value}28.jpg` },
-//   { src: `${imgUrl.value}29.jpg` },
-//   { src: `${imgUrl.value}30.jpg` },
-//   { src: `${imgUrl.value}31.jpg` },
+//   { src: `${imgUrl.value}/1.jpg` },
+//   { src: `${imgUrl.value}/2.jpg` },
+//   { src: `${imgUrl.value}/3.jpg` },
+//   { src: `${imgUrl.value}/4.jpg` },
+//   { src: `${imgUrl.value}/5.jpg` },
+//   { src: `${imgUrl.value}/6.jpg` },
+//   { src: `${imgUrl.value}/7.jpg` },
+//   { src: `${imgUrl.value}/8.jpg` },
+//   { src: `${imgUrl.value}/9.jpg` },
+//   { src: `${imgUrl.value}/10.jpg` },
+//   { src: `${imgUrl.value}/11.jpg` },
+//   { src: `${imgUrl.value}/12.jpg` },
+//   { src: `${imgUrl.value}/13.jpg` },
+//   { src: `${imgUrl.value}/14.jpg` },
+//   { src: `${imgUrl.value}/15.jpg` },
+//   { src: `${imgUrl.value}/16.jpg` },
+//   { src: `${imgUrl.value}/17.jpg` },
+//   { src: `${imgUrl.value}/18.jpg` },
+//   { src: `${imgUrl.value}/19.jpg` },
+//   { src: `${imgUrl.value}/20.jpg` },
+//   { src: `${imgUrl.value}/21.jpg` },
+//   { src: `${imgUrl.value}/22.jpg` },
+//   { src: `${imgUrl.value}/23.jpg` },
+//   { src: `${imgUrl.value}/24.jpg` },
+//   { src: `${imgUrl.value}/25.jpg` },
+//   { src: `${imgUrl.value}/26.jpg` },
+//   { src: `${imgUrl.value}/27.jpg` },
+//   { src: `${imgUrl.value}/28.jpg` },
+//   { src: `${imgUrl.value}/29.jpg` },
+//   { src: `${imgUrl.value}/30.jpg` },
+//   { src: `${imgUrl.value}/31.jpg` },
 // ])
 
 const imageDialogVisible = ref(false)
 const currentImageIndex = ref(0)
 let swiperInstance: SwiperType | null = null
 
-// const showImage = (index: number) => {
-//   currentImageIndex.value = index
-//   imageDialogVisible.value = true
-// }
+const showImage = (index: number) => {
+  currentImageIndex.value = index
+  imageDialogVisible.value = true
+}
 
 const onSwiperInitialized = (swiper: SwiperType) => {
   swiperInstance = swiper
 }
 
 // // 當 dialog 打開時，確保 Swiper 滑動到正確的圖片
-// watch(imageDialogVisible, (newValue) => {
-//   if (newValue && swiperInstance) {
-//     swiperInstance.slideTo(currentImageIndex.value, 0)
-//   }
-// })
+watch(imageDialogVisible, (newValue) => {
+  if (newValue && swiperInstance) {
+    swiperInstance.slideTo(currentImageIndex.value, 0)
+  }
+})
 
 // const accountInfo = ref([{
 //   name: '서지유',
@@ -697,7 +705,7 @@ const submit = async () => {
   refresh()
 }
 
-
+// Audio
 const isPlay = ref(true)
 const isPause = ref(false)
 const handleAudio = (status: string) => {
@@ -719,6 +727,19 @@ const pauseBtn = ref()
 const onLoadMarker = (marker:naver.maps.Marker) => {
 }
 
+// const playBgm = () => {
+//   audio.value!.muted = true;
+//   audio.value?.play();
+//   const ctx = new AudioContext();
+//   const canAutoPlay = ctx.state === 'running';
+//   ctx.close();
+//   if (canAutoPlay) {
+//     audio.value!.muted = false;
+//     isPause.value = true;
+//   } else {
+//     console.log(false);
+//   }
+// }
 
 onMounted(() => {
   window.addEventListener("resize", checkScreenSize)
@@ -726,6 +747,13 @@ onMounted(() => {
     audio.value = document.querySelector("audio")
     playBtn.value = document.querySelector("play-btn")
     pauseBtn.value = document.querySelector("pause-btn")
+    document.addEventListener('touchstart', function() {
+      audio.value?.play();
+      
+      isPause.value = true;
+      isPlay.value = false;
+    })
+    console.log(audio.value)
   }
 })
 </script>

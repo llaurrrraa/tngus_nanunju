@@ -18,10 +18,10 @@ export default defineNuxtConfig({
       "viewport": "width=device-width, initial-scale=1",
       "title": "서지유 🤍 조수현",
       "meta": [
-          { "name": "description", "content": "서지유, 조수현 결혼합니다." },
-          { "property": "og:title", "content": "서지유, 조수현 결혼합니다." },
-          { "property": "og:url", "content": "http://localhost:3000/" },
-          { "property": "og:description", "content": "서지유, 조수현 결혼합니다." },
+          { "name": "description", "content": "2024년 8월 31일(토) 5:30pm 크레스트 72" },
+          { "property": "og:title", "content": "2024년 8월 31일(토) 5:30pm 크레스트 72" },
+          { "property": "og:url", "content": "http://tngus_nanunju/" },
+          { "property": "og:description", "content": "2024년 8월 31일(토) 5:30pm 크레스트 72." },
       ],
       link: [
         { rel: "icon", type: "image/png", href: "favicon.ico" },
