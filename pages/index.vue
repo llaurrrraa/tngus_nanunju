@@ -1,9 +1,5 @@
 <template>
-
-  <v-overlay
-    :model-value="overlay"
-    class="align-center justify-center"
-  >
+  <v-overlay :model-value="overlay" class="align-center justify-center">
     <v-progress-circular
       color="error"
       size="64"
@@ -13,11 +9,11 @@
   <div class="invite-wrap">
     <div class="invite-inner">
       <main>
-        <img v-if="isPlay" src="/assets/images/icons-play.png" class="icon-play" id="btn-play" @click="handleAudio('play')"></img>
-        <img v-if="isPause" src="/assets/images/icons-pause.png" class="icon-pause" id="btn-pause" @click="handleAudio('pause')"></img>
+        <!-- <img v-if="isPlay" src="/assets/images/audio.gif" class="icon-play" id="btn-play" @click="handleAudio('play')"></img>
+        <img v-if="isPause" src="/assets/images/mute.png" class="icon-pause" id="btn-pause" @click="handleAudio('pause')"></img> -->
         <video autoplay loop muted playsinline hidden="true">
           <audio ref="audio" hidden="true">
-            <source src="/public/bg-sound.mp3" type="audio/mpeg">
+            <source src="/public/bg-sound.mp3" type="audio/mpeg" />
             Your browser does not support the audio element.
           </audio>
         </video>
@@ -47,8 +43,16 @@
           <p class="kr">크레스트72</p>
         </div>
         <div class="info-images">
-          <img src="~/assets/images/sub_img.png" class="sub_img" alt="sub_img" />
-          <img src="~/assets/images/flower-2.png" class="flower_1" alt="flower_deco_1" />
+          <img
+            src="~/assets/images/sub_img.png"
+            class="sub_img"
+            alt="sub_img"
+          />
+          <img
+            src="~/assets/images/flower-2.png"
+            class="flower_1"
+            alt="flower_deco_1"
+          />
         </div>
         <div class="wording-wrapper">
           <p class="kr wording">
@@ -62,16 +66,22 @@
           <div class="contact">
             <p class="kr-mono">서상길. 이연숙<span>아들</span> 서지유</p>
             <p class="kr-mono">조재성. 홍연숙<span>딸</span> 조수현</p>
-            <button class="kr-mono contact-btn" @click="showContent">연락하기</button>
+            <button class="kr-mono contact-btn" @click="showContent">
+              연락하기
+            </button>
           </div>
         </div>
-        <img src="~/assets/images/flower-2.png" class="flower_2" alt="flower_deco_2" />
+        <img
+          src="~/assets/images/flower-2.png"
+          class="flower_2"
+          alt="flower_deco_2"
+        />
       </section>
       <section class="calendar">
         <p class="kr block-title">- Save The Date -</p>
         <div class="calendar-date">
           <div class="header kr">8월 <span class="kr">August</span></div>
-          <img src="~/assets/images/calendar.png" alt="">
+          <img src="~/assets/images/calendar.png" alt="" />
           <!-- <hr />
           <table border="0">
             <tbody>
@@ -132,15 +142,23 @@
             </tbody>
           </table> -->
         </div>
-        <img src="~/assets/images/flower-3.png" class="flower_3" alt="flower_deco_2" />
+        <img
+          src="~/assets/images/flower-3.png"
+          class="flower_3"
+          alt="flower_deco_2"
+        />
       </section>
       <section class="gallery">
         <p class="kr block-title">- Gallery -</p>
         <div class="gallery-container">
-          <!-- <div v-for="(img, index) in galleryImg" :key="index">
-            <img :src="`${img.src}`" :alt="`img-${index+1}`" @click="showImage(index)">
-          </div> -->
-          <nuxt-error-boundary @error="() => {}">
+          <div v-for="(img, index) in galleryImg" :key="index">
+            <img
+              :src="`${img.src}`"
+              :alt="`img-${index + 1}`"
+              @click="showImage(index)"
+            />
+          </div>
+          <!-- <nuxt-error-boundary @error="() => {}">
             <Swiper
               id="collection-swiper"
               :modules="[
@@ -201,8 +219,12 @@
               <SwiperSlide><img src="~/assets/images/gallery/30.jpg" alt="img-30" /></SwiperSlide>
               <SwiperSlide><img src="~/assets/images/gallery/31.jpg" alt="img-31" /></SwiperSlide>
             </Swiper>
-          </nuxt-error-boundary>
-          <!-- <v-dialog v-model="imageDialogVisible" max-width="500" class="image-dialog">
+          </nuxt-error-boundary> -->
+          <v-dialog
+            v-model="imageDialogVisible"
+            max-width="90vw"
+            class="image-dialog"
+          >
             <v-card>
               <v-card-title class="d-flex justify-end align-center">
                 <v-btn
@@ -221,37 +243,72 @@
                       SwiperNavigation,
                       SwiperKeyboard,
                       SwiperA11y,
-                      SwiperFreeMode
+                      SwiperFreeMode,
+                      SwiperZoom,
                     ]"
                     :navigation="true"
                     :pagination="{
-                      type: 'fraction'
+                      type: 'fraction',
                     }"
                     :keyboard="{
-                      enabled: true
+                      enabled: true,
                     }"
                     :a11y="{
                       enabled: true,
                       prevSlideMessage: '上一頁',
-                      nextSlideMessage: '下一頁'
+                      nextSlideMessage: '下一頁',
                     }"
                     :freemode="true"
+                    :zoom="{
+                      maxRatio: 2,
+                      minRatio: 1,
+                      toggle: true,
+                    }"
                     :observer="true"
                     :grab-cursor="true"
                     :space-between="20"
                     :initial-slide="currentImageIndex"
                     @swiper="onSwiperInitialized"
                   >
-                    <SwiperSlide v-for="(img, index) in galleryImg" :key="index">
-                      <img class="modal-img" :src="`${img.src}`" :alt="`img-${index+1}`" />
+                    <SwiperSlide
+                      v-for="(img, index) in galleryImg"
+                      :key="index"
+                    >
+                      <div class="swiper-zoom-container">
+                        <img
+                          class="modal-img"
+                          :src="`${img.src}`"
+                          :alt="`img-${index + 1}`"
+                        />
+                      </div>
                     </SwiperSlide>
                   </Swiper>
                 </nuxt-error-boundary>
               </v-card-item>
+              <!-- <v-card-item class="zoom-footer">
+                <div
+                  style="display: flex; justify-content: center"
+                  class="zoom"
+                >
+                  <v-btn size="small" class="zoom-btn" @click="handleZoom('in')"
+                    ><i class="fa-solid fa-plus"></i
+                  ></v-btn>
+                  <v-btn
+                    size="small"
+                    class="zoom-btn"
+                    @click="handleZoom('out')"
+                    ><i class="fa-solid fa-minus"></i
+                  ></v-btn>
+                </div>
+              </v-card-item> -->
             </v-card>
-          </v-dialog> -->
+          </v-dialog>
         </div>
-        <img src="~/assets/images/flower-3.png" class="flower_4" alt="flower_deco_2" />
+        <img
+          src="~/assets/images/flower-3.png"
+          class="flower_4"
+          alt="flower_deco_2"
+        />
       </section>
       <section class="map">
         <p class="kr block-title" style="margin-bottom: 1rem">- Location -</p>
@@ -259,64 +316,78 @@
           <p class="kr-mono res">크레스트 72</p>
           <p class="kr-mono res-info">서울 중구 장충단로 72</p>
           <div class="link-to-map">
-            <img src="~/assets/images/kakaomap_basic.png" alt="">
-            <a href="https://map.kakao.com/link/map/서울 중구 장충단로 549,37.5511378,127.0028114" >지도를 자세히 보려면 여기를 눌러주세요</a>
+            <img src="~/assets/images/kakaomap_basic.png" alt="" />
+            <a
+              href="https://map.kakao.com/link/map/서울 중구 장충단로 549,37.5511378,127.0028114"
+              >지도를 자세히 보려면 여기를 눌러주세요</a
+            >
           </div>
           <NaverMap
-          class="naver-map"
-          style="width: 100%; height: 30vh"
-          client-id="f4wfl3jf7e"
-          :mapOptions="{
+            class="naver-map"
+            style="width: 100%; height: 30vh"
+            client-id="f4wfl3jf7e"
+            :mapOptions="{
               latitude: 37.5511375,
               longitude: 127.0028114,
               zoom: 18,
             }"
           >
             <NaverMarker
-            :latitude="37.5511378" :longitude="127.0028114" :onLoaded="onLoadMarker"
-            style="position: absolute;left: -25px;top: -35px"
+              :latitude="37.5511378"
+              :longitude="127.0028114"
+              :onLoaded="onLoadMarker"
+              style="position: absolute; left: -25px; top: -35px"
             >
-            <img class="marker" src="~/assets/images/marker.png" alt="map marker">
+              <img
+                class="marker"
+                src="~/assets/images/marker.png"
+                alt="map marker"
+              />
             </NaverMarker>
           </NaverMap>
           <div class="trans">
             <div class="tr-tool metro">
               <div class="title">
-                <img src="~/assets/images/metro.png" alt="metro">
+                <img src="~/assets/images/metro.png" alt="metro" />
                 <p class="kr-mono">지하철</p>
               </div>
               <p class="content">
-                3호선 동대입구역 6번출구에서<br/> 
-                셔틀버스 15분간격 운행 <br/>
-                ( 오전시간 부터 횟수제한 없이 15분 간격으로 순환 셔틀버스 운행합니다. ) 
+                3호선 동대입구역 6번출구에서<br />
+                셔틀버스 15분간격 운행 <br />
+                ( 오전시간 부터 횟수제한 없이 15분 간격으로 순환 셔틀버스
+                운행합니다. )
               </p>
             </div>
             <div class="tr-tool bus">
               <div class="title">
-                <img src="~/assets/images/bus.png" alt="bus">
+                <img src="~/assets/images/bus.png" alt="bus" />
                 <p class="kr-mono">버스</p>
               </div>
               <p class="content">
-                - 국립극장 앞 하차 <br/>
-                - 간선버스(파랑색) 420번 <br/>
-                - 남산순환버스(녹색) 01번 <br/>
+                - 국립극장 앞 하차 <br />
+                - 간선버스(파랑색) 420번 <br />
+                - 남산순환버스(녹색) 01번 <br />
               </p>
             </div>
             <div class="tr-tool bus">
               <div class="title">
-                <img src="~/assets/images/car.png" alt="car">
+                <img src="~/assets/images/car.png" alt="car" />
                 <p class="kr-mono">자가용</p>
               </div>
               <p class="content">
-                - 대형 주차시설 (800대 가능)<br/>
-                - 국립극장 맞은편 반얀트리 옆 위치<br/>
+                - 대형 주차시설 (800대 가능)<br />
+                - 국립극장 맞은편 반얀트리 옆 위치<br />
               </p>
             </div>
           </div>
         </div>
       </section>
       <section class="account">
-        <img src="~/assets/images/couple.png" class="couple" alt="flower_deco_2" />
+        <img
+          src="~/assets/images/couple.png"
+          class="couple"
+          alt="flower_deco_2"
+        />
         <p class="kr block-title">- 마음 전하는 곳 -</p>
         <div style="margin-bottom: 0.5rem">
           <v-expansion-panels>
@@ -324,34 +395,67 @@
               <v-expansion-panel-title>신랑측 계좌번호</v-expansion-panel-title>
               <v-expansion-panel-text class="content">
                 <div class="content-info">
-                  <div style="display: flex;align-items: center; justify-content: space-between; margin-bottom: 0.5rem">
-                    <p class="kr-mono">신한 <span id="bank-1">110-411-483439</span></p>
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      justify-content: space-between;
+                      margin-bottom: 0.5rem;
+                    "
+                  >
+                    <p class="kr-mono">
+                      신한 <span id="bank-1">110-411-483439</span>
+                    </p>
                     <v-btn size="small" variant="tonal" @click="setCopy(1)">
                       <template v-if="!isCopied[0]">복사</template>
-                      <template v-else><i class="fa-solid fa-check"></i></template>
+                      <template v-else
+                        ><i class="fa-solid fa-check"></i
+                      ></template>
                     </v-btn>
                   </div>
-                  <p class="kr-mono" style="font-weight: bold;">서지유</p>
+                  <p class="kr-mono" style="font-weight: bold">서지유</p>
                 </div>
                 <div class="content-info">
-                  <div style="display: flex;align-items: center; justify-content: space-between; margin-bottom: 0.5rem">
-                    <p class="kr-mono">신한 <span id="bank-2">110-531-224600</span></p>
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      justify-content: space-between;
+                      margin-bottom: 0.5rem;
+                    "
+                  >
+                    <p class="kr-mono">
+                      신한 <span id="bank-2">110-531-224600</span>
+                    </p>
                     <v-btn size="small" variant="tonal" @click="setCopy(2)">
                       <template v-if="!isCopied[1]">복사</template>
-                      <template v-else><i class="fa-solid fa-check"></i></template>
+                      <template v-else
+                        ><i class="fa-solid fa-check"></i
+                      ></template>
                     </v-btn>
                   </div>
-                  <p class="kr-mono" style="font-weight: bold;">서상길</p>
+                  <p class="kr-mono" style="font-weight: bold">서상길</p>
                 </div>
                 <div class="content-info">
-                  <div style="display: flex;align-items: center; justify-content: space-between; margin-bottom: 0.5rem">
-                    <p class="kr-mono">신한 <span id="bank-3">110-573-254041</span></p>
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      justify-content: space-between;
+                      margin-bottom: 0.5rem;
+                    "
+                  >
+                    <p class="kr-mono">
+                      신한 <span id="bank-3">110-573-254041</span>
+                    </p>
                     <v-btn size="small" variant="tonal" @click="setCopy(3)">
                       <template v-if="!isCopied[2]">복사</template>
-                      <template v-else><i class="fa-solid fa-check"></i></template>
+                      <template v-else
+                        ><i class="fa-solid fa-check"></i
+                      ></template>
                     </v-btn>
                   </div>
-                  <p class="kr-mono" style="font-weight: bold;">이연숙</p>
+                  <p class="kr-mono" style="font-weight: bold">이연숙</p>
                 </div>
               </v-expansion-panel-text>
             </v-expansion-panel>
@@ -363,34 +467,67 @@
               <v-expansion-panel-title>신부측 계좌번호</v-expansion-panel-title>
               <v-expansion-panel-text class="content">
                 <div class="content-info">
-                  <div style="display: flex;align-items: center; justify-content: space-between; margin-bottom: 0.5rem">
-                    <p class="kr-mono">우리 <span id="bank-4">1002-152-991519</span></p>
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      justify-content: space-between;
+                      margin-bottom: 0.5rem;
+                    "
+                  >
+                    <p class="kr-mono">
+                      우리 <span id="bank-4">1002-152-991519</span>
+                    </p>
                     <v-btn size="small" variant="tonal" @click="setCopy(4)">
                       <template v-if="!isCopied[3]">복사</template>
-                      <template v-else><i class="fa-solid fa-check"></i></template>
+                      <template v-else
+                        ><i class="fa-solid fa-check"></i
+                      ></template>
                     </v-btn>
                   </div>
-                  <p class="kr-mono" style="font-weight: bold;">조수현</p>
+                  <p class="kr-mono" style="font-weight: bold">조수현</p>
                 </div>
                 <div class="content-info">
-                  <div style="display: flex;align-items: center; justify-content: space-between; margin-bottom: 0.5rem">
-                    <p class="kr-mono">우리 <span id="bank-5">1002-442-118277</span></p>
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      justify-content: space-between;
+                      margin-bottom: 0.5rem;
+                    "
+                  >
+                    <p class="kr-mono">
+                      우리 <span id="bank-5">1002-442-118277</span>
+                    </p>
                     <v-btn size="small" variant="tonal" @click="setCopy(5)">
                       <template v-if="!isCopied[4]">복사</template>
-                      <template v-else><i class="fa-solid fa-check"></i></template>
+                      <template v-else
+                        ><i class="fa-solid fa-check"></i
+                      ></template>
                     </v-btn>
                   </div>
-                  <p class="kr-mono" style="font-weight: bold;">조재성</p>
+                  <p class="kr-mono" style="font-weight: bold">조재성</p>
                 </div>
                 <div class="content-info">
-                  <div style="display: flex;align-items: center; justify-content: space-between; margin-bottom: 0.5rem">
-                    <p class="kr-mono">우리 <span id="bank-6">597-124718-02-003</span></p>
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      justify-content: space-between;
+                      margin-bottom: 0.5rem;
+                    "
+                  >
+                    <p class="kr-mono">
+                      우리 <span id="bank-6">597-124718-02-003</span>
+                    </p>
                     <v-btn size="small" variant="tonal" @click="setCopy(6)">
                       <template v-if="!isCopied[5]">복사</template>
-                      <template v-else><i class="fa-solid fa-check"></i></template>
+                      <template v-else
+                        ><i class="fa-solid fa-check"></i
+                      ></template>
                     </v-btn>
                   </div>
-                  <p class="kr-mono" style="font-weight: bold;">홍연숙</p>
+                  <p class="kr-mono" style="font-weight: bold">홍연숙</p>
                 </div>
               </v-expansion-panel-text>
             </v-expansion-panel>
@@ -398,56 +535,75 @@
         </div>
       </section>
       <section class="notice">
-        <img src="~/assets/images/marriage.png" class="marriage" alt="marriage">
-        <p class="en block-title" style="font-weight: bold;">- Notice -</p>
-        <p class="kr-mono content">하객분들께, 바쁘신 와중에도 <br />
-            자리에 참석해 주셔서 정말 감사합니다. <br/><br/>
-            이 진실한 서약의 자리가 부끄럽지 않게 서로만을 바라보며 행복하게 살겠습니다. </p>
+        <img
+          src="~/assets/images/marriage.png"
+          class="marriage"
+          alt="marriage"
+        />
+        <p class="en block-title" style="font-weight: bold">- Notice -</p>
+        <p class="kr-mono content">
+          하객분들께, 바쁘신 와중에도 <br />
+          자리에 참석해 주셔서 정말 감사합니다. <br /><br />
+          이 진실한 서약의 자리가 부끄럽지 않게 서로만을 바라보며 행복하게
+          살겠습니다.
+        </p>
       </section>
       <section class="photo">
-        <img src="~/assets/images/photo.png" class="photo-img" alt="photoboth">
+        <img
+          src="~/assets/images/photo.png"
+          class="photo-img"
+          alt="photoboth"
+        />
         <p class="kr block-title">- 포토부스 이용 안내 -</p>
         <p class="kr-mono content">
-          귀한 발걸음 해주신 분들의
-          따뜻한 미소를 남길 수 있는 포토부스를 준비하였습니다.<br/><br/>
-          축하의 말씀과 사진을 남겨주시면 
-          소중히 간직하도록 하겠습니다. 
+          귀한 발걸음 해주신 분들의 따뜻한 미소를 남길 수 있는 포토부스를
+          준비하였습니다.<br /><br />
+          축하의 말씀과 사진을 남겨주시면 소중히 간직하도록 하겠습니다.
         </p>
         <p class="tip kr-mono">
-          * 식 1시간 전인 4시30분 부터 <br/>120분 동안 이용 가능합니다. <br/>
-          * 무제한 촬영 가능합니다. <br/>
-          * 인원수대로 출력 가능합니다. 
+          * 식 1시간 전인 4시30분 부터 <br />120분 동안 이용 가능합니다. <br />
+          * 무제한 촬영 가능합니다. <br />
+          * 인원수대로 출력 가능합니다.
         </p>
       </section>
       <section class="dining">
-        <img src="~/assets/images/restaurant.png" class="restaurant" alt="">
+        <img src="~/assets/images/restaurant.png" class="restaurant" alt="" />
         <p class="kr block-title">- 식순 -</p>
         <div class="content">
           <ul class="kr-mono">
-            <li><span>- 16:30 -</span><br/>하객맞이 및 포토부스 이용</li>
-            <li><span>- 17:30 -</span><br/>1부예식</li>
-            <li><span>- 18:00 -</span><br/>사진촬영</li>
-            <li><span>- 18:30 -</span><br/>2부예식</li>
-            <li><span>- 19:00 -</span><br/>마무리</li>
+            <li><span>- 16:30 -</span><br />하객맞이 및 포토부스 이용</li>
+            <li><span>- 17:30 -</span><br />1부예식</li>
+            <li><span>- 18:00 -</span><br />사진촬영</li>
+            <li><span>- 18:30 -</span><br />2부예식</li>
+            <li><span>- 19:00 -</span><br />마무리</li>
           </ul>
           <p class="kr-mono">
-            식이 끝난 후 식장을 꾸몄던 생화는 
-            하객분들이 가져가실 수 있도록 포장해드립니다. 
-            마지막까지 함께해주시면 감사하겠습니다. 
+            식이 끝난 후 식장을 꾸몄던 생화는 하객분들이 가져가실 수 있도록
+            포장해드립니다. 마지막까지 함께해주시면 감사하겠습니다.
           </p>
         </div>
       </section>
-      <img src="~/assets/images/wedding.gif" alt="">
+      <img src="~/assets/images/wedding.gif" alt="" />
       <section class="invitation">
-        <p class="kr block-title">- 참석 요부 전달하기 -</p>
+        <p class="kr block-title">- 참석 여부 전달하기 -</p>
         <v-form ref="form" class="form">
           <div class="radio-wrapper">
             <v-radio-group inline v-model="boardData.sortation">
-              <v-btn size="large" style="margin-right: 0.75rem" :class="{ clicked: isSortation_m }" @click="setSortation('man')">
+              <v-btn
+                size="large"
+                style="margin-right: 0.75rem"
+                :class="{ clicked: isSortation_m }"
+                @click="setSortation('man')"
+              >
                 <span style="margin-right: 0.25rem">🤵🏻</span>
                 <v-radio label="신랑측" value="신랑측"></v-radio>
               </v-btn>
-              <v-btn size="large" style="margin-left: 0.75rem" :class="{ clicked: isSortation_w }" @click="setSortation('woman')">
+              <v-btn
+                size="large"
+                style="margin-left: 0.75rem"
+                :class="{ clicked: isSortation_w }"
+                @click="setSortation('woman')"
+              >
                 <span style="margin-right: 0.25rem">👰🏻</span>
                 <v-radio label="신부측" value="신부측"></v-radio>
               </v-btn>
@@ -461,10 +617,10 @@
             style="margin-bottom: 1rem"
           ></v-text-field>
           <v-select
-          label="참석인원 / Attendance"
-          v-model="boardData.attendance"
-          density="compact"
-          :items="['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']"
+            label="참석인원 / Attendance"
+            v-model="boardData.attendance"
+            density="compact"
+            :items="['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']"
           ></v-select>
           <v-text-field
             v-model="boardData.companion"
@@ -474,26 +630,32 @@
             style="margin-bottom: 2.5rem"
           ></v-text-field>
           <div class="attendance-wrapper">
-            <p class="kr-mono">- 참석엽부 -</p>
+            <p class="kr-mono">- 참석여부 -</p>
             <v-radio-group inline v-model="boardData.attending_status">
               <v-radio label="1부까지" value="1부까지" color="error">
                 <template v-slot:label>
-                  <div class="kr-mono">1부까지 <strong class="text-error">17:30 ~ 18:00</strong></div>
+                  <div class="kr-mono">
+                    1부까지 <strong class="text-error">17:30 ~ 18:00</strong>
+                  </div>
                 </template>
               </v-radio>
               <v-radio label="2부까지" value="2부까지" color="error">
                 <template v-slot:label>
-                  <div class="kr-mono">2부까지 <strong class="text-error">18:30 ~ 19:00</strong></div>
+                  <div class="kr-mono">
+                    2부까지 <strong class="text-error">18:30 ~ 19:00</strong>
+                  </div>
                 </template>
               </v-radio>
               <v-radio label="미참" value="미참" color="error"></v-radio>
             </v-radio-group>
           </div>
         </v-form>
-        <v-btn class="submit kr-mono" block @click="submit">등록하기 Submit</v-btn>
+        <v-btn class="submit kr-mono" block @click="submit"
+          >등록하기 Submit</v-btn
+        >
       </section>
       <section class="notice2">
-        <img src="~/assets/images/bouquet.png" alt="">
+        <img src="~/assets/images/bouquet.png" alt="" />
         <p class="kr-mono">화환은 정중히 사양합니다.</p>
         <p class="kr-mono">축하해주시는 마음만 감사히 받겠습니다.</p>
       </section>
@@ -504,8 +666,8 @@
 
 <script setup lang="ts">
 import Swal from "sweetalert2"
-import { NaverMap, NaverMarker } from '@naver-maps/vue'
-import type { Swiper as SwiperType } from 'swiper'
+import { NaverMap, NaverMarker } from "@naver-maps/vue"
+import type { Swiper as SwiperType } from "swiper"
 
 const mobile = ref(false)
 const checkScreenSize = () => {
@@ -545,45 +707,47 @@ const showContent = () => {
 
 const runtimeConfig = useRuntimeConfig()
 const imgUrl = ref(runtimeConfig.public.imgUrl)
-// const galleryImg = ref([
-//   { src: `${imgUrl.value}/1.jpg` },
-//   { src: `${imgUrl.value}/2.jpg` },
-//   { src: `${imgUrl.value}/3.jpg` },
-//   { src: `${imgUrl.value}/4.jpg` },
-//   { src: `${imgUrl.value}/5.jpg` },
-//   { src: `${imgUrl.value}/6.jpg` },
-//   { src: `${imgUrl.value}/7.jpg` },
-//   { src: `${imgUrl.value}/8.jpg` },
-//   { src: `${imgUrl.value}/9.jpg` },
-//   { src: `${imgUrl.value}/10.jpg` },
-//   { src: `${imgUrl.value}/11.jpg` },
-//   { src: `${imgUrl.value}/12.jpg` },
-//   { src: `${imgUrl.value}/13.jpg` },
-//   { src: `${imgUrl.value}/14.jpg` },
-//   { src: `${imgUrl.value}/15.jpg` },
-//   { src: `${imgUrl.value}/16.jpg` },
-//   { src: `${imgUrl.value}/17.jpg` },
-//   { src: `${imgUrl.value}/18.jpg` },
-//   { src: `${imgUrl.value}/19.jpg` },
-//   { src: `${imgUrl.value}/20.jpg` },
-//   { src: `${imgUrl.value}/21.jpg` },
-//   { src: `${imgUrl.value}/22.jpg` },
-//   { src: `${imgUrl.value}/23.jpg` },
-//   { src: `${imgUrl.value}/24.jpg` },
-//   { src: `${imgUrl.value}/25.jpg` },
-//   { src: `${imgUrl.value}/26.jpg` },
-//   { src: `${imgUrl.value}/27.jpg` },
-//   { src: `${imgUrl.value}/28.jpg` },
-//   { src: `${imgUrl.value}/29.jpg` },
-//   { src: `${imgUrl.value}/30.jpg` },
-//   { src: `${imgUrl.value}/31.jpg` },
-// ])
+const galleryImg = ref([
+  { src: `${imgUrl.value}/1.jpg` },
+  { src: `${imgUrl.value}/2.jpg` },
+  { src: `${imgUrl.value}/3.jpg` },
+  { src: `${imgUrl.value}/4.jpg` },
+  { src: `${imgUrl.value}/5.jpg` },
+  { src: `${imgUrl.value}/6.jpg` },
+  { src: `${imgUrl.value}/7.jpg` },
+  { src: `${imgUrl.value}/8.jpg` },
+  { src: `${imgUrl.value}/9.jpg` },
+  { src: `${imgUrl.value}/10.jpg` },
+  { src: `${imgUrl.value}/11.jpg` },
+  { src: `${imgUrl.value}/12.jpg` },
+  { src: `${imgUrl.value}/13.jpg` },
+  { src: `${imgUrl.value}/14.jpg` },
+  { src: `${imgUrl.value}/15.jpg` },
+  { src: `${imgUrl.value}/16.jpg` },
+  { src: `${imgUrl.value}/17.jpg` },
+  { src: `${imgUrl.value}/18.jpg` },
+  { src: `${imgUrl.value}/19.jpg` },
+  { src: `${imgUrl.value}/20.jpg` },
+  { src: `${imgUrl.value}/21.jpg` },
+  { src: `${imgUrl.value}/22.jpg` },
+  { src: `${imgUrl.value}/23.jpg` },
+  { src: `${imgUrl.value}/24.jpg` },
+  { src: `${imgUrl.value}/25.jpg` },
+  { src: `${imgUrl.value}/26.jpg` },
+  { src: `${imgUrl.value}/27.jpg` },
+  { src: `${imgUrl.value}/28.jpg` },
+  { src: `${imgUrl.value}/31.jpg` },
+  { src: `${imgUrl.value}/29.jpg` },
+  { src: `${imgUrl.value}/30.jpg` },
+])
 
 const imageDialogVisible = ref(false)
 const currentImageIndex = ref(0)
 let swiperInstance: SwiperType | null = null
 
+const imgId = ref(0)
 const showImage = (index: number) => {
+  imgId.value = index
   currentImageIndex.value = index
   imageDialogVisible.value = true
 }
@@ -617,7 +781,7 @@ const { data: test, refresh } = (await useFetch(
 const isSortation_m = ref(false)
 const isSortation_w = ref(false)
 const setSortation = (status: string) => {
-  if (status === 'man') {
+  if (status === "man") {
     isSortation_m.value = true
     isSortation_w.value = false
   } else {
@@ -688,14 +852,16 @@ const submit = async () => {
   overlay.value = true
   boardData.value.created_time = convertTime(new Date())
   try {
-    const { data: result } = await addUser(boardData.value) as { [key: string]: any }
+    const { data: result } = (await addUser(boardData.value)) as {
+      [key: string]: any
+    }
     setTimeout(() => {
       overlay.value = false
       Swal.fire({
         text: "답변이 등록되었습니다.",
         icon: "success",
-        confirmButtonText: "확인"
-      });
+        confirmButtonText: "확인",
+      })
     }, 500)
   } catch (error) {
     console.error(error)
@@ -706,8 +872,8 @@ const submit = async () => {
   boardData.value.companion = ""
   boardData.value.attending_status = ""
   boardData.value.created_time = ""
-  isSortation_m.value = false;
-  isSortation_w.value = false;
+  isSortation_m.value = false
+  isSortation_w.value = false
   refresh()
 }
 
@@ -715,66 +881,80 @@ const submit = async () => {
 const isPlay = ref(true)
 const isPause = ref(false)
 const handleAudio = (status: string) => {
-  if (status === 'play') {
+  if (status === "play") {
     isPlay.value = false
     isPause.value = true
-    audio.value?.play()
-  } else {
-    isPause.value = false
-    isPlay.value = true
+    audio.value!.muted = true
     audio.value?.pause()
+  } else {
+    isPlay.value = true
+    isPause.value = false
+    audio.value?.play()
   }
 }
 
-const audio = ref<null|HTMLAudioElement>(null)
+const audio = ref<null | HTMLAudioElement>(null)
 const playBtn = ref()
 const pauseBtn = ref()
 
-const onLoadMarker = (marker:naver.maps.Marker) => {
-}
+const onLoadMarker = (marker: naver.maps.Marker) => {}
 
-const isCopied = ref([false, false, false, false, false, false,])
+const isCopied = ref([false, false, false, false, false, false])
 const setCopy = (target: number) => {
-  let txt: any;
+  let txt: any
   switch (target) {
     case 1:
-      txt = document.getElementById('bank-1');
+      txt = document.getElementById("bank-1")
       break
     case 2:
-      txt = document.getElementById('bank-2');
-    break
+      txt = document.getElementById("bank-2")
+      break
     case 3:
-      txt = document.getElementById('bank-3');
+      txt = document.getElementById("bank-3")
       break
     case 4:
-      txt = document.getElementById('bank-4');
+      txt = document.getElementById("bank-4")
       break
     case 5:
-      txt = document.getElementById('bank-5');
+      txt = document.getElementById("bank-5")
       break
     case 6:
-      txt = document.getElementById('bank-6');
+      txt = document.getElementById("bank-6")
       break
   }
-  isCopied.value[target-1] = true;
-  let textArea = document.createElement('textarea');
-  textArea.value = txt.textContent;
-  navigator.clipboard.writeText(textArea.value);
+  isCopied.value[target - 1] = true
+  let textArea = document.createElement("textarea")
+  textArea.value = txt.textContent
+  navigator.clipboard.writeText(textArea.value)
   setTimeout(() => {
-    isCopied.value[target-1] = false;
+    isCopied.value[target - 1] = false
   }, 800)
 }
 
+// const handleZoom = (status: string) => {
+//   const image = document.getElementById(`dialog-img-${imgId.value + 1}`)
+//   console.log("image", image)
+//   const imgTag = image?.querySelector("img")
+//   console.log("img", imgTag)
+//   if (imgTag && status === "in") {
+//     imgTag.style.height = imgTag.height * 1.1 + "px"
+//     imgTag.style.width = imgTag.width * 1.1 + "px"
+//   } else if (imgTag && status === "out") {
+//     imgTag.style.height = imgTag.height / 1.1 + "px"
+//     imgTag.style.width = imgTag.width / 1.1 + "px"
+//   }
+// }
+
 onMounted(() => {
   window.addEventListener("resize", checkScreenSize)
-  if(process.client) {
+  if (process.client) {
     audio.value = document.querySelector("audio")
     playBtn.value = document.querySelector("play-btn")
     pauseBtn.value = document.querySelector("pause-btn")
-    document.addEventListener('touchstart', function() {
-      audio.value?.play();
-      isPause.value = true;
-      isPlay.value = false;
+    document.addEventListener("touchstart", function () {
+      audio.value?.play()
+      isPlay.value = true
+      isPause.value = false
     })
   }
 })

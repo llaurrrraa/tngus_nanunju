@@ -399,7 +399,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    & .swiper-wrapper {
+    /* & .swiper-wrapper {
       padding: 1rem;
       align-items: center;
       & img {
@@ -407,16 +407,18 @@ main {
         height: 100%;
         object-fit: contain;
       }
-    }
-    /* & img {
+    } */
+    & img {
       width: 100px;
       height: 100px;
       border-radius: 0.5rem;
       object-fit: cover;
       margin: 0.25rem !important;
-    } */
+    }
   }
 }
+
+
 .image-dialog {
   & .v-card-title {
     & .img-index {
@@ -432,6 +434,13 @@ main {
     }
   }
 }
+
+.v-overlay-container {
+  & .v-card-item {
+    padding: 8px !important;
+  }
+}
+
 .swiper-button-prev, .swiper-button-next {
   color: rgba(255,255,255,0.4) !important;
 }
