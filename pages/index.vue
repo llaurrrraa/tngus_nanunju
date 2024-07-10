@@ -578,7 +578,7 @@
         </p>
       </section>
       <section class="dining">
-        <img src="~/assets/images/card.png" class="restaurant" alt="" />
+        <img src="~/assets/images/marriage.png" class="restaurant" alt="" />
         <p class="kr block-title">- 식순 -</p>
         <div class="content">
           <ul class="kr-mono">
@@ -605,7 +605,7 @@
           </ul>
           <p class="kr-mono">
             식이 끝난 후 식장을 꾸몄던 생화는 하객분들이 가져가실 수 있도록
-            포장해드립니다.<br />
+            포장해드립니다. 🌷<br />
             마지막까지 함께해주시면 <br />감사하겠습니다.
           </p>
         </div>
@@ -686,7 +686,25 @@
         <p class="kr-mono">화환은 정중히 사양합니다.</p>
         <p class="kr-mono">축하해주시는 마음만 감사히 받겠습니다.</p>
       </section>
-      <section class="footer"></section>
+      <section class="footer">
+        <hr />
+        <div class="share">
+          <a
+            id="kakaotalk-sharing-btn"
+            href="javascript:;"
+            @click="shareToKakao()"
+            class="kr-mono"
+            style="margin-bottom: 0.75rem"
+          >
+            <img src="~/assets/images/kakao.png" class="kakao" alt="" />
+            카카오톡으로 공유하기
+          </a>
+          <a href="javascript:;" class="kr-mono" @click="setCopy(7)">
+            <img src="~/assets/images/link.png" class="link" alt="" />
+            청첩장 주소 복사하기
+          </a>
+        </div>
+      </section>
     </div>
   </div>
 </template>
@@ -695,6 +713,7 @@
 import Swal from "sweetalert2"
 import { NaverMap, NaverMarker } from "@naver-maps/vue"
 import type { Swiper as SwiperType } from "swiper"
+import Kakao from "kakao-js-sdk"
 
 const mobile = ref(false)
 const checkScreenSize = () => {
@@ -790,11 +809,6 @@ watch(imageDialogVisible, (newValue) => {
   }
 })
 
-// const accountInfo = ref([{
-//   name: '서지유',
-//   bankNum: ''
-// }])
-
 // Google api
 const form = ref()
 
@@ -814,25 +828,6 @@ const setSortation = (status: string) => {
   } else {
     isSortation_m.value = false
     isSortation_w.value = true
-  }
-}
-
-const isStatus1 = ref(false)
-const isStatus2 = ref(false)
-const isStatus3 = ref(true)
-const setStatus = (status: number) => {
-  if (status === 1) {
-    isStatus1.value = true
-    isStatus2.value = false
-    isStatus3.value = false
-  } else if (status === 2) {
-    isStatus1.value = false
-    isStatus2.value = true
-    isStatus3.value = false
-  } else {
-    isStatus1.value = false
-    isStatus2.value = false
-    isStatus3.value = true
   }
 }
 
@@ -948,29 +943,45 @@ const setCopy = (target: number) => {
     case 6:
       txt = document.getElementById("bank-6")
       break
+    case 7:
+      txt = "https://llaurrrraa.github.io/tngus_nanunju/"
   }
   isCopied.value[target - 1] = true
   let textArea = document.createElement("textarea")
-  textArea.value = txt.textContent
+  if (target !== 7) textArea.value = txt.textContent
+  else textArea.value = txt
   navigator.clipboard.writeText(textArea.value)
   setTimeout(() => {
     isCopied.value[target - 1] = false
   }, 800)
 }
 
-// const handleZoom = (status: string) => {
-//   const image = document.getElementById(`dialog-img-${imgId.value + 1}`)
-//   console.log("image", image)
-//   const imgTag = image?.querySelector("img")
-//   console.log("img", imgTag)
-//   if (imgTag && status === "in") {
-//     imgTag.style.height = imgTag.height * 1.1 + "px"
-//     imgTag.style.width = imgTag.width * 1.1 + "px"
-//   } else if (imgTag && status === "out") {
-//     imgTag.style.height = imgTag.height / 1.1 + "px"
-//     imgTag.style.width = imgTag.width / 1.1 + "px"
-//   }
-// }
+const shareToKakao = () => {
+  if (process.client && window.Kakao) {
+    window.Kakao.Share.createDefaultButton({
+      container: "#kakaotalk-sharing-btn",
+      objectType: "feed",
+      content: {
+        title: "서지유, 조수현 결혼합니다.",
+        description: "2024년 8월 31일(토) 5:30pm 크레스트 72",
+        imageUrl: "https://llaurrrraa.github.io/tngus_nanunju/images/31.jpg",
+        link: {
+          mobileWebUrl: "https://llaurrrraa.github.io/tngus_nanunju/",
+          webUrl: "https://llaurrrraa.github.io/tngus_nanunju/",
+        },
+      },
+      buttons: [
+        {
+          title: "둘러보기",
+          link: {
+            mobileWebUrl: "https://llaurrrraa.github.io/tngus_nanunju/",
+            webUrl: "https://llaurrrraa.github.io/tngus_nanunju/",
+          },
+        },
+      ],
+    })
+  }
+}
 
 onMounted(() => {
   window.addEventListener("resize", checkScreenSize)

@@ -810,11 +810,7 @@ main {
     min-width: 85% !important;
   }
 }
-.footer {
-  margin-top: 3rem !important;
-  height: 200px;
-  background-color: #565656;
-}
+
 .message-board {
   min-height: 300px;
   display: flex;
@@ -850,7 +846,30 @@ main {
   }
   & p {
     color: rgb(131, 131, 131); 
-    font-size: 0.835rem;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+}
+
+.footer {
+  margin: 2rem auto !important;
+  height: 200px;
+  & hr {
+    width: 80%;
+    color:rgb(206, 206, 206);
+    margin: 0 auto !important;
+  }
+  & .share {
+    margin: 1.5rem auto!important;
+    & a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  & .kakao, .link {
+    width: 15px;
+    margin-right: 8px !important;
   }
 }
 
@@ -923,7 +942,7 @@ a {
   &:active {
     opacity: 1;
   }
-  &:focus {
+  /* &:focus {
     outline: none;
     box-shadow: 0 0 0 3px var(--color-primary-dark);
   }
@@ -932,7 +951,7 @@ a {
     &[aria-current="page"] {
       box-shadow: 0 0 0 3px var(--color-primary-dark);
     }
-  }
+  } */
 }
 
 select {

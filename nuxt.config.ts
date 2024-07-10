@@ -24,7 +24,7 @@ export default defineNuxtConfig({
           { "property": "og:description", "content": "2024년 8월 31일(토) 5:30pm 크레스트 72." },
       ],
       script: [
-        { src: 'https://developers.kakao.com/sdk/js/kakao.js' }
+        { src: "https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js", integrity:"sha384-TiCUE00h649CAMonG018J2ujOgDKW/kVWlChEuu4jK2vxfAAD0eZxzCKakxg55G4", crossorigin: 'anonymous' }
       ],
       link: [
         { rel: "icon", type: "image/png", href: "favicon.ico" },
