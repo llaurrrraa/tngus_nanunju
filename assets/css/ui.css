@@ -173,10 +173,12 @@ main {
       }
     }
   }
-  & .second {
+  & .location {
+    margin-bottom: 3rem !important;
     & p {
       margin-bottom: 0.5rem !important;
-      font-size: 1rem;
+      font-size: 1.1rem;
+      letter-spacing: -0.2px;
     }
   }
   & .lottie-animation-container {
@@ -212,6 +214,7 @@ main {
     background-color: rgba(255,255,255,0.2);
     border-radius: 6px;
     & .wording {
+      font-size: 1.15rem;
       padding: 0 0.5rem 3.25rem !important;
     }
     & p {
@@ -337,7 +340,9 @@ main {
       }
     }
     hr {
-      color: #dddddd;
+      width: 85%;
+      margin: 0.5rem auto !important;
+      color: #e7e7e7;
     }
     & table {
       margin-top: 1rem !important;
@@ -507,6 +512,7 @@ main {
       display: flex;
       align-items: center;
       margin-top: 2rem !important;
+      font-weight: bold;
       & img {
         width: 25px;
         margin-right: 0.75rem !important;
@@ -681,21 +687,28 @@ main {
       margin-bottom: 1.5rem !important;
       & li {
         line-height: 1.5;
-        font-size: 0.95rem;
         /* font-weight: bold; */
         color: rgb(182, 99, 99);
         margin-bottom: 1rem !important;
         & span {
+          font-size: 1.15rem;
+          border-radius: 15px;
           background-color: #fff;
-          padding: 0.25rem 0.75rem 0rem!important;
+          padding: 0.15rem 1rem!important;
           margin-bottom: 1rem !important;
+          font-weight: bold;
+        }
+        & p {
+          font-size: 1rem !important;
+          color: rgb(182, 99, 99);
+          margin-top: 0.5rem !important;
         }
       }
     }
     & p {
       color: #575050;
       line-height: 1.35;
-      margin: 1rem !important;
+      margin: 1rem 0.25rem!important;
       word-break: keep-all;
       font-size: 0.85rem !important;
     }

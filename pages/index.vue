@@ -19,6 +19,10 @@
         </video>
       </main>
       <section class="info">
+        <div class="location">
+          <p class="kr-mono">2024년 8월 31일 (토) 저녁 5시 30분</p>
+          <p class="kr-mono" style="font-weight: bold">서울 중구 크레스트72</p>
+        </div>
         <div class="first">
           <div>
             <p style="margin-right: 1.5rem; margin-bottom: 0.75rem">🤵🏻</p>
@@ -38,10 +42,10 @@
             <p class="kr" style="margin-left: 1.5rem">Cho Su Hyun</p>
           </div>
         </div>
-        <div class="second">
+        <!-- <div class="second">
           <p class="kr">2024년 8월 31일 (토) 저녁 5시 30분</p>
           <p class="kr">크레스트72</p>
-        </div>
+        </div> -->
         <div class="info-images">
           <img
             src="~/assets/images/sub_img.png"
@@ -57,9 +61,10 @@
         <div class="wording-wrapper">
           <p class="kr wording">
             지유를 행복하게 만드는 미소를 가진 수현이와 수현이의 손을 항상
-            따뜻하게 잡아주는 지유가 싱그러운 햇살이 축복해 주는 8월의 마지막 날
-            <br />평생 서로의 행복이 되기로 약속하려 합니다. <br /><br />
-            그 행복의 순간에 소중한 분들을 초대 드립니다.<br />
+            따뜻하게 잡아주는 지유가 <br /><br />싱그러운 햇살이 축복해 주는
+            8월의 마지막 날 평생 서로의 행복이 <br />되기로 약속하려 합니다.
+            <br /><br />
+            그 행복의 순간에 소중한 분들을 <br />초대 드립니다.<br />
             귀한 발걸음으로 축하해 주시면 감사하겠습니다.
           </p>
           <hr />
@@ -82,8 +87,8 @@
         <div class="calendar-date">
           <div class="header kr">8월 <span class="kr">August</span></div>
           <img src="~/assets/images/calendar.png" alt="" />
-          <!-- <hr />
-          <table border="0">
+          <hr />
+          <!-- <table border="0">
             <tbody>
               <tr>
                 <td class="kr sun">일</td>
@@ -354,8 +359,8 @@
               <p class="content">
                 3호선 동대입구역 6번출구에서<br />
                 셔틀버스 15분간격 운행 <br />
-                ( 오전시간 부터 횟수제한 없이 15분 간격으로 순환 셔틀버스
-                운행합니다. )
+                (오전시간 부터 횟수제한 없이<br />
+                15분 간격으로 순환 셔틀버스 운행합니다.)
               </p>
             </div>
             <div class="tr-tool bus">
@@ -376,6 +381,12 @@
               </div>
               <p class="content">
                 - 대형 주차시설 (800대 가능)<br />
+                <span style="padding-left: 0.85rem"
+                  >2시간 무료주차권 기본제공 후 </span
+                ><br />
+                <span style="padding-left: 0.85rem"
+                  >필요시 주차권 추가 배부</span
+                ><br /><br />
                 - 국립극장 맞은편 반얀트리 옆 위치<br />
               </p>
             </div>
@@ -534,7 +545,7 @@
           </v-expansion-panels>
         </div>
       </section>
-      <section class="notice">
+      <!-- <section class="notice">
         <img
           src="~/assets/images/marriage.png"
           class="marriage"
@@ -547,7 +558,7 @@
           이 진실한 서약의 자리가 부끄럽지 않게 서로만을 바라보며 행복하게
           살겠습니다.
         </p>
-      </section>
+      </section> -->
       <section class="photo">
         <img
           src="~/assets/images/photo.png"
@@ -567,19 +578,35 @@
         </p>
       </section>
       <section class="dining">
-        <img src="~/assets/images/restaurant.png" class="restaurant" alt="" />
+        <img src="~/assets/images/card.png" class="restaurant" alt="" />
         <p class="kr block-title">- 식순 -</p>
         <div class="content">
           <ul class="kr-mono">
-            <li><span>- 16:30 -</span><br />하객맞이 및 포토부스 이용</li>
-            <li><span>- 17:30 -</span><br />1부예식</li>
-            <li><span>- 18:00 -</span><br />사진촬영</li>
-            <li><span>- 18:30 -</span><br />2부예식</li>
-            <li><span>- 19:00 -</span><br />마무리</li>
+            <li>
+              <span class="kr-mono">16:30</span>
+              <p class="kr-mono">하객맞이 및 포토부스 이용</p>
+            </li>
+            <li>
+              <span>17:30</span>
+              <p>1부예식</p>
+            </li>
+            <li>
+              <span>18:00</span>
+              <p>사진촬영</p>
+            </li>
+            <li>
+              <span>18:30</span>
+              <p>2부예식</p>
+            </li>
+            <li>
+              <span>19:00</span>
+              <p>마무리</p>
+            </li>
           </ul>
           <p class="kr-mono">
             식이 끝난 후 식장을 꾸몄던 생화는 하객분들이 가져가실 수 있도록
-            포장해드립니다. 마지막까지 함께해주시면 감사하겠습니다.
+            포장해드립니다.<br />
+            마지막까지 함께해주시면 <br />감사하겠습니다.
           </p>
         </div>
       </section>
