@@ -52,7 +52,7 @@ body {
 }
 
 main {
-  background-image: url(/assets/images/main_img_1.png);
+  background-image: url(/assets/images/main_img.webp);
   background-size: contain;
   background-repeat: no-repeat; 
   background-position: center;
@@ -169,7 +169,7 @@ main {
         margin-bottom: 0.25rem;
       }
       & span {
-        color:rgb(236, 148, 24);
+        color:#ec9418;
       }
     }
   }
@@ -179,6 +179,7 @@ main {
       margin-bottom: 0.5rem !important;
       font-size: 1.1rem;
       letter-spacing: -0.2px;
+      color: #435421;
     }
   }
   & .lottie-animation-container {
@@ -214,7 +215,7 @@ main {
     background-color: rgba(255,255,255,0.2);
     border-radius: 6px;
     & .wording {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       padding: 0 0.5rem 3.25rem !important;
     }
     & p {
@@ -320,8 +321,7 @@ main {
 }
 
 .calendar {
-  /* margin: 4rem 2rem!important; */
-  & p {
+  & .block-title {
     margin: 4rem 2rem 1.5rem!important;
     font-style: italic;
   }
@@ -332,8 +332,7 @@ main {
       height: 100%;
     }
     & .header {
-      font-size: 1.15rem !important;
-      margin-bottom: 1rem !important;
+      font-size: 1.2rem !important;
       color: var(--main-text);
       & span {
         letter-spacing: 1px !important;
@@ -343,6 +342,16 @@ main {
       width: 85%;
       margin: 0.5rem auto !important;
       color: #e7e7e7;
+    }
+    & .countdown {
+      font-style: normal;
+      margin-top: 2rem !important;
+      & p {
+        letter-spacing: -0.3px;
+        color: var(--main-text);
+        font-size: 1rem;
+        line-height: 1.85;
+      }
     }
     & table {
       margin-top: 1rem !important;
@@ -400,6 +409,7 @@ main {
     margin-bottom: 0 !important;
   }
   & .gallery-container {
+    width: 100%;
     padding: 1rem !important;
     display: flex;
     flex-wrap: wrap;
@@ -413,13 +423,31 @@ main {
         object-fit: contain;
       }
     } */
+    & .v-img {
+      margin: 0.25rem !important;
+    }
     & img {
       width: 100px;
       height: 100px;
       border-radius: 0.5rem;
       object-fit: cover;
-      margin: 0.25rem !important;
+      /* margin: 0.5rem !important; */
     }
+  }
+}
+
+.image-dialog.v-overlay--active {
+  display: flex !important;
+  align-items: center !important;
+  & .v-overlay__scrim {
+    opacity: var(--v-overlay-opacity, 0.8) !important;
+  }
+  & .v-card--variant-elevated {
+    box-shadow: none !important;
+    background-color: transparent !important;
+  }
+  & .swiper-wrapper {
+    align-items: center !important;
   }
 }
 
@@ -846,7 +874,7 @@ main {
   }
   & p {
     color: rgb(131, 131, 131); 
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: bold;
   }
 }

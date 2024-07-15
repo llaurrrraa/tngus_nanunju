@@ -86,8 +86,38 @@
         <p class="kr block-title">- Save The Date -</p>
         <div class="calendar-date">
           <div class="header kr">8월 <span class="kr">August</span></div>
-          <img src="~/assets/images/calendar.png" alt="" />
-          <hr />
+          <img src="~/assets/images/calendar.svg" alt="" />
+          <!-- <hr /> -->
+          <div class="countdown">
+            <p
+              class="kr-mono"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              서지유
+              <img
+                src="~/assets/images/heart.png"
+                style="width: 15px; margin: 0 5px"
+                alt=""
+              />
+              조수현 결혼식이
+              <span
+                style="
+                  font-size: 1.75rem;
+                  font-family: 'Single Day';
+                  margin: 0 0.5rem;
+                  color: #ffcd28;
+                  font-weight: bold;
+                "
+              >
+                {{ dDay }}
+              </span>
+              일 남았습니다.
+            </p>
+          </div>
           <!-- <table border="0">
             <tbody>
               <tr>
@@ -157,11 +187,24 @@
         <p class="kr block-title">- Gallery -</p>
         <div class="gallery-container">
           <div v-for="(img, index) in galleryImg" :key="index">
-            <img
+            <v-img
               :src="`${img.src}`"
+              aspect-ratio="1"
+              height="100px"
+              width="100px"
+              cover
               :alt="`img-${index + 1}`"
               @click="showImage(index)"
-            />
+            >
+              <template v-slot:placeholder>
+                <v-row align="center" class="fill-height ma-0" justify="center">
+                  <v-progress-circular
+                    color="grey-lighten-5"
+                    indeterminate
+                  ></v-progress-circular>
+                </v-row>
+              </template>
+            </v-img>
           </div>
           <!-- <nuxt-error-boundary @error="() => {}">
             <Swiper
@@ -225,11 +268,7 @@
               <SwiperSlide><img src="~/assets/images/gallery/31.jpg" alt="img-31" /></SwiperSlide>
             </Swiper>
           </nuxt-error-boundary> -->
-          <v-dialog
-            v-model="imageDialogVisible"
-            max-width="90vw"
-            class="image-dialog"
-          >
+          <v-overlay v-model="imageDialogVisible" class="image-dialog">
             <v-card>
               <v-card-title class="d-flex justify-end align-center">
                 <v-btn
@@ -260,12 +299,12 @@
                     }"
                     :a11y="{
                       enabled: true,
-                      prevSlideMessage: '上一頁',
-                      nextSlideMessage: '下一頁',
+                      prevSlideMessage: 'prev',
+                      nextSlideMessage: 'next',
                     }"
                     :freemode="true"
                     :zoom="{
-                      maxRatio: 2,
+                      maxRatio: 4,
                       minRatio: 1,
                       toggle: true,
                     }"
@@ -307,7 +346,7 @@
                 </div>
               </v-card-item> -->
             </v-card>
-          </v-dialog>
+          </v-overlay>
         </div>
         <img
           src="~/assets/images/flower-3.png"
@@ -360,7 +399,7 @@
                 3호선 동대입구역 6번출구에서<br />
                 셔틀버스 15분간격 운행 <br />
                 (오전시간 부터 횟수제한 없이<br />
-                15분 간격으로 순환 셔틀버스 운행합니다.)
+                15분 간격으로 순환버스 운행합니다.)
               </p>
             </div>
             <div class="tr-tool bus">
@@ -510,7 +549,7 @@
                     <p class="kr-mono">
                       우리 <span id="bank-5">1002-442-118277</span>
                     </p>
-                    <v-btn size="small" variant="tonal" @click="setCopy(5)">
+                    <v-btn size="small" riant="tonal" @click="setCopy(5)">
                       <template v-if="!isCopied[4]">복사</template>
                       <template v-else
                         ><i class="fa-solid fa-check"></i
@@ -751,8 +790,17 @@ const showContent = () => {
   })
 }
 
+// Kakao friend
+const addFriend = () => {
+  if (process.client && window.Kakao) {
+    window.Kakao.AddFriend.addFriend({})
+  }
+}
+
+// image gallery
 const runtimeConfig = useRuntimeConfig()
 const imgUrl = ref(runtimeConfig.public.imgUrl)
+
 const galleryImg = ref([
   { src: `${imgUrl.value}/1.jpg` },
   { src: `${imgUrl.value}/2.jpg` },
@@ -962,9 +1010,9 @@ const shareToKakao = () => {
       container: "#kakaotalk-sharing-btn",
       objectType: "feed",
       content: {
-        title: "서지유, 조수현 결혼합니다.",
-        description: "2024년 8월 31일(토) 5:30pm 크레스트 72",
-        imageUrl: "https://llaurrrraa.github.io/tngus_nanunju/images/31.jpg",
+        title: "서지유, 조수현 결혼합니다.🌿",
+        description: "2024년8월31일(토)5:30pm 크레스트72",
+        imageUrl: "https://llaurrrraa.github.io/tngus_nanunju/images/32.jpg",
         link: {
           mobileWebUrl: "https://llaurrrraa.github.io/tngus_nanunju/",
           webUrl: "https://llaurrrraa.github.io/tngus_nanunju/",
@@ -972,7 +1020,7 @@ const shareToKakao = () => {
       },
       buttons: [
         {
-          title: "둘러보기",
+          title: "🤍초대합니다🤍",
           link: {
             mobileWebUrl: "https://llaurrrraa.github.io/tngus_nanunju/",
             webUrl: "https://llaurrrraa.github.io/tngus_nanunju/",
@@ -981,6 +1029,15 @@ const shareToKakao = () => {
       ],
     })
   }
+}
+
+// DiffDate
+const dDay = ref(0)
+const diffDate = (day: any) => {
+  const dayNow = new Date(day)
+  const dDayDate = new Date("2024/08/31")
+  const difference: any = Math.abs(dDayDate.getTime() - dayNow.getTime())
+  dDay.value = Math.ceil(difference / (1000 * 3600 * 24))
 }
 
 onMounted(() => {
@@ -995,5 +1052,6 @@ onMounted(() => {
       isPause.value = false
     })
   }
+  diffDate(new Date())
 })
 </script>
