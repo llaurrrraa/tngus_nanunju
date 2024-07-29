@@ -118,64 +118,6 @@
               일 남았습니다.
             </p>
           </div>
-          <!-- <table border="0">
-            <tbody>
-              <tr>
-                <td class="kr sun">일</td>
-                <td class="kr">월</td>
-                <td class="kr">화</td>
-                <td class="kr">수</td>
-                <td class="kr">목</td>
-                <td class="kr">금</td>
-                <td class="kr">토</td>
-              </tr>
-              <tr>
-                <td class="kr sun"></td>
-                <td class="kr"></td>
-                <td class="kr"></td>
-                <td class="kr"></td>
-                <td class="kr">1</td>
-                <td class="kr">2</td>
-                <td class="kr">3</td>
-              </tr>
-              <tr>
-                <td class="kr sun">4</td>
-                <td class="kr">5</td>
-                <td class="kr">6</td>
-                <td class="kr">7</td>
-                <td class="kr">8</td>
-                <td class="kr">9</td>
-                <td class="kr">10</td>
-              </tr>
-              <tr>
-                <td class="kr sun">11</td>
-                <td class="kr">12</td>
-                <td class="kr">13</td>
-                <td class="kr">14</td>
-                <td class="kr">15</td>
-                <td class="kr">16</td>
-                <td class="kr">17</td>
-              </tr>
-              <tr>
-                <td class="kr sun">18</td>
-                <td class="kr">19</td>
-                <td class="kr">20</td>
-                <td class="kr">21</td>
-                <td class="kr">22</td>
-                <td class="kr">23</td>
-                <td class="kr">24</td>
-              </tr>
-              <tr>
-                <td class="kr sun">25</td>
-                <td class="kr">26</td>
-                <td class="kr">27</td>
-                <td class="kr">28</td>
-                <td class="kr">29</td>
-                <td class="kr">30</td>
-                <td class="kr weddingDay"></td>
-              </tr>
-            </tbody>
-          </table> -->
         </div>
         <img
           src="~/assets/images/flower-3.png"
@@ -206,68 +148,6 @@
               </template>
             </v-img>
           </div>
-          <!-- <nuxt-error-boundary @error="() => {}">
-            <Swiper
-              id="collection-swiper"
-              :modules="[
-                SwiperPagination,
-                SwiperNavigation,
-                SwiperKeyboard,
-                SwiperA11y,
-                SwiperFreeMode
-              ]"
-              :navigation="true"
-              :pagination="{
-                type: 'fraction'
-              }"
-              :keyboard="{
-                enabled: true
-              }"
-              :a11y="{
-                enabled: true,
-                prevSlideMessage: '上一頁',
-                nextSlideMessage: '下一頁'
-              }"
-              :freemode="true"
-              :observer="true"
-              :grab-cursor="true"
-              :space-between="20"
-              :initial-slide="currentImageIndex"
-              @swiper="onSwiperInitialized"
-            >
-              <SwiperSlide><img src="~/assets/images/gallery/1.jpg" alt="img-1" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/2.jpg" alt="img-2" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/3.jpg" alt="img-3" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/4.jpg" alt="img-4" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/5.jpg" alt="img-5" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/6.jpg" alt="img-6" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/7.jpg" alt="img-7" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/8.jpg" alt="img-8" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/9.jpg" alt="img-9" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/10.jpg" alt="img-10" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/11.jpg" alt="img-11" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/12.jpg" alt="img-12" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/13.jpg" alt="img-13" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/14.jpg" alt="img-14" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/15.jpg" alt="img-15" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/16.jpg" alt="img-16" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/17.jpg" alt="img-17" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/18.jpg" alt="img-18" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/19.jpg" alt="img-19" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/20.jpg" alt="img-20" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/21.jpg" alt="img-21" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/22.jpg" alt="img-22" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/23.jpg" alt="img-23" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/24.jpg" alt="img-24" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/25.jpg" alt="img-25" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/26.jpg" alt="img-26" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/27.jpg" alt="img-27" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/28.jpg" alt="img-28" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/29.jpg" alt="img-29" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/30.jpg" alt="img-30" /></SwiperSlide>
-              <SwiperSlide><img src="~/assets/images/gallery/31.jpg" alt="img-31" /></SwiperSlide>
-            </Swiper>
-          </nuxt-error-boundary> -->
           <v-overlay v-model="imageDialogVisible" class="image-dialog">
             <v-card>
               <v-card-title class="d-flex justify-end align-center">
@@ -329,22 +209,6 @@
                   </Swiper>
                 </nuxt-error-boundary>
               </v-card-item>
-              <!-- <v-card-item class="zoom-footer">
-                <div
-                  style="display: flex; justify-content: center"
-                  class="zoom"
-                >
-                  <v-btn size="small" class="zoom-btn" @click="handleZoom('in')"
-                    ><i class="fa-solid fa-plus"></i
-                  ></v-btn>
-                  <v-btn
-                    size="small"
-                    class="zoom-btn"
-                    @click="handleZoom('out')"
-                    ><i class="fa-solid fa-minus"></i
-                  ></v-btn>
-                </div>
-              </v-card-item> -->
             </v-card>
           </v-overlay>
         </div>
@@ -831,6 +695,7 @@ const galleryImg = ref([
   { src: `${imgUrl.value}/27.jpg` },
   { src: `${imgUrl.value}/28.jpg` },
   { src: `${imgUrl.value}/31.jpg` },
+  { src: `${imgUrl.value}/33.jpg` },
   { src: `${imgUrl.value}/29.jpg` },
   { src: `${imgUrl.value}/30.jpg` },
 ])
