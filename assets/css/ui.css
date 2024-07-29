@@ -52,7 +52,7 @@ body {
 }
 
 main {
-  background-image: url(/assets/images/main_img.webp);
+  background-image: url(/assets/images/main.webp);
   background-size: contain;
   background-repeat: no-repeat; 
   background-position: center;
